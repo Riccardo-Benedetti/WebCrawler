@@ -1,0 +1,337 @@
+ott 04, 2016 3:11:03 PM jade.core.Runtime beginContainer
+INFORMAZIONI: ----------------------------------
+    This is JADE 4.3.3 - revision 6726 of 2014/12/09 09:33:02
+    downloaded in Open Source, under LGPL restrictions,
+    at http://jade.tilab.com/
+----------------------------------------
+ott 04, 2016 3:11:04 PM jade.imtp.leap.LEAPIMTPManager initialize
+INFORMAZIONI: Listening for intra-platform commands on address:
+- jicp://192.168.1.42:1099
+
+ott 04, 2016 3:11:05 PM jade.core.BaseService init
+INFORMAZIONI: Service jade.core.management.AgentManagement initialized
+ott 04, 2016 3:11:05 PM jade.core.BaseService init
+INFORMAZIONI: Service jade.core.messaging.Messaging initialized
+ott 04, 2016 3:11:05 PM jade.core.BaseService init
+INFORMAZIONI: Service jade.core.resource.ResourceManagement initialized
+[TuCSoN Service]: --------------------------------------------------------------------------------
+[TuCSoN Service]:  _________  _    _       _____
+[TuCSoN Service]: |  _   _  || |  | |     |_   _|
+[TuCSoN Service]: |_/ | | \_|| |__| |_      | |
+[TuCSoN Service]:     | |    |____   _| _   | |
+[TuCSoN Service]:    _| |_       _| |_ | |__' |
+[TuCSoN Service]:   |_____|     |_____|`.____.'
+[TuCSoN Service]: --------------------------------------------------------------------------------
+[TuCSoN Service]: Welcome to the TuCSoN4JADE (T4J) bridge :)
+[TuCSoN Service]:   T4J version TuCSoN4JADE-1.1
+[TuCSoN Service]: Tue Oct 04 15:11:05 CEST 2016
+[TuCSoN Service]: --------------------------------------------------------------------------------
+ott 04, 2016 3:11:05 PM jade.core.BaseService init
+INFORMAZIONI: Service it.unibo.tucson.jade.service.TucsonService initialized
+ott 04, 2016 3:11:05 PM jade.mtp.http.HTTPServer <init>
+INFORMAZIONI: HTTP-MTP Using XML parser com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser
+ott 04, 2016 3:11:05 PM jade.core.messaging.MessagingService boot
+INFORMAZIONI: MTP addresses:
+http://DESKTOP-0ISRON4:7778/acc
+ott 04, 2016 3:11:05 PM jade.core.AgentContainerImpl joinPlatform
+INFORMAZIONI: --------------------------------------
+Agent container Main-Container@192.168.1.42 is ready.
+--------------------------------------------
+ott 04, 2016 3:11:05 PM jade.tools.ToolAgent init
+AVVERTENZA: NotificationService not installed. Some tool may not work properly.
+[watchdog@WebCrawlerPlatform]: Booting local TuCSoN Node on default port...
+[TuCSoN Service Helper]: Booting local TuCSoN Node Service on port 20504
+[TuCSoN Node Service]: --------------------------------------------------------------------------------
+[TuCSoN Node Service]:  _________            ______   ______          ____  _____
+[TuCSoN Node Service]: |  _   _  |         .' ___  |.' ____ \        |_   \|_   _|
+[TuCSoN Node Service]: |_/ | | \_|__   _  / .'   \_|| (___ \_|  .--.   |   \ | |
+[TuCSoN Node Service]:     | |   [  | | | | |        _.____`. / .'`\ \ | |\ \| |
+[TuCSoN Node Service]:    _| |_   | \_/ |,\ `.___.'\| \____) || \__. |_| |_\   |_
+[TuCSoN Node Service]:   |_____|  '.__.'_/ `.____ .' \______.' '.__.'|_____|\____|
+[TuCSoN Node Service]: --------------------------------------------------------------------------------
+[TuCSoN Node Service]: Welcome to the TuCSoN infrastructure :)
+[TuCSoN Node Service]:   Version TuCSoN-1.12.0.0301
+[TuCSoN Node Service]: --------------------------------------------------------------------------------
+[TuCSoN Node Service]: Tue Oct 04 15:11:06 CEST 2016
+[TuCSoN Node Service]: Beginning TuCSoN Node Service installation...
+[TuCSoN Node Service]: Configuring TuCSoN Node Service...
+[TuCSoN Node Service]: Setting up Observation Service...
+....[RespectVMContext ('$OBS'@localhost:20504)]: No more solutions.
+....[RespectVMContext ('$OBS'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ]
+....[RespectVMContext ('$OBS'@localhost:20504)]: guard = true
+....[RespectVMContext ('$OBS'@localhost:20504)]: evaluation = true
+[TuCSoN Node Service]: Setting up Management Service...
+....[RespectVMContext ('$OBS'@localhost:20504)]: triggered reaction = reaction(out(boot),','(out(agent_list([])),','(out(tc_list([])),in(boot))))
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(agent_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(tc_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: reaction evaluation success = false
+....[RespectVMContext ('$OBS'@localhost:20504)]: COMPLETION phase: [ op: boot, ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$OBS'@localhost:20504)]: guard = true
+....[RespectVMContext ('$OBS'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$OBS'@localhost:20504)]: triggered reaction = reaction(out(boot),','(out(agent_list([])),','(out(tc_list([])),in(boot))))
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(agent_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(tc_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: in(boot), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$OBS'@localhost:20504)]: reaction evaluation success = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: No more solutions.
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(out(boot),','(in(boot),','(no(boot_info(_1580261183)),','(current_time(_1299748264),','(out(boot_info([time(_1299748264)])),','(out(is_rbac_installed(no)),','(out(context_id(0)),','(out(is_inspection_allowed(yes)),','(out(policy(admin_policy,[])),','(out(role_policy(admin_role,admin_policy)),out(policy(defaultPolicy,[]))))))))))))
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: boot, ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(out(boot),','(in(boot),','(no(boot_info(_731808576)),','(current_time(_316003970),','(out(boot_info([time(_316003970)])),','(out(is_rbac_installed(no)),','(out(context_id(0)),','(out(is_inspection_allowed(yes)),','(out(policy(admin_policy,[])),','(out(role_policy(admin_role,admin_policy)),out(policy(defaultPolicy,[]))))))))))))
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(boot), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(boot_info(_1889677075)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(boot_info([time(113)])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(is_rbac_installed(no)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(0)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(is_inspection_allowed(yes)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(policy(admin_policy,[])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(role_policy(admin_role,admin_policy)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(policy(defaultPolicy,[])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: basic_agent_class(basicAgentClass), ie: [ [ src: '$TucsonNodeService-Agent', op: out(basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(is_login_required(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_login_required(no), ie: [ [ src: '$TucsonNodeService-Agent', op: out(is_login_required(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(list_all_roles(yes)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: list_all_roles(yes), ie: [ [ src: '$TucsonNodeService-Agent', op: out(list_all_roles(yes)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(allow_inspection(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: allow_inspection(no), ie: [ [ src: '$TucsonNodeService-Agent', op: out(allow_inspection(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+[TuCSoN Node Service]: Setting up Environment Configuration Service...
+....[RespectVMContext ('$ENV'@localhost:20504)]: No more solutions.
+[TuCSoN Node Service]: Spawning management agents...
+[TuCSoN Node Service]: Spawning Node Management Agent...
+[TuCSoN Node Service]: --------------------------------------------------------------------------------
+[TuCSoN Node Service]: Spawning ACC Provider Agent...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: node_management_agent, op: in(cmd(X)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = response
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+..[ACCProvider]: Listening to incoming ACC requests...
+[TuCSoN Node Service]: Spawning Welcome Agent...
+[TuCSoN Node Service]: Spawning Environmental Agent...
+..[WelcomeAgent]: Listening to incoming connections...
+..[WelcomeAgent]: --------------------------------------------------------------------------------
+..[WelcomeAgent]: Delegating ACCProvider received enter request...
+..[ACCProvider]: Processing ACC request...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'45530692-3b93-4dcc-8f86-7f180de11935')),','(rd(open_session(_1371729216,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',_1503374632,_1158783234)),','(no(context_request(negotAgent,ok(_566366533),'45530692-3b93-4dcc-8f86-7f180de11935')),out(context_request(negotAgent,ok(_1371729216),basic,'45530692-3b93-4dcc-8f86-7f180de11935')))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'45530692-3b93-4dcc-8f86-7f180de11935')),','(no(basic_agent_class(basic)),','(in(context_id(_1437318369)),','(is(_1529475451,'+'(_1437318369,1)),','(out(context_id(_1529475451)),','(no(open_session(_341444577,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',_1092055778,_1230213781)),','(out(open_session(_1437318369,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',basic,na)),out(context_request(negotAgent,ok(_1437318369),basic,'45530692-3b93-4dcc-8f86-7f180de11935')))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'45530692-3b93-4dcc-8f86-7f180de11935')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_1003937609)),','(is(_1466152404,'+'(_1003937609,1)),','(out(context_id(_1466152404)),','(no(open_session(_518135115,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',_474429573,_291930323)),','(out(open_session(_1003937609,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',basic,na)),out(context_request(negotAgent,ok(_1003937609),basic,'45530692-3b93-4dcc-8f86-7f180de11935'))))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'45530692-3b93-4dcc-8f86-7f180de11935')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(negotAgent,failed(is_login_required),basic,'45530692-3b93-4dcc-8f86-7f180de11935')))))
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(0)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(1)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1019300732,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',_1541449149,_738394484)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(0,negotAgent,'45530692-3b93-4dcc-8f86-7f180de11935',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(negotAgent,ok(0),basic,'45530692-3b93-4dcc-8f86-7f180de11935')), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+..[ACCProvider]: ACC request accepted, ACC id is < 0 >
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(negotAgent,ok(0),basic,'45530692-3b93-4dcc-8f86-7f180de11935'), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,ok(0),basic,'45530692-3b93-4dcc-8f86-7f180de11935')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+..[WelcomeAgent]: Listening to incoming connections...
+..[WelcomeAgent]: --------------------------------------------------------------------------------
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
+..[WelcomeAgent]: Delegating ACCProvider received enter request...
+..[ACCProvider]: Processing ACC request...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')),','(rd(open_session(_813239863,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',_2064904228,_1167266812)),','(no(context_request('$EnvAgent',ok(_1409600392),'74efc929-dfb3-4f89-94f2-b3329407a4df')),out(context_request('$EnvAgent',ok(_813239863),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')),','(no(basic_agent_class(basic)),','(in(context_id(_1235000930)),','(is(_1535243933,'+'(_1235000930,1)),','(out(context_id(_1535243933)),','(no(open_session(_1384260920,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',_1487464134,_1969884223)),','(out(open_session(_1235000930,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',basic,na)),out(context_request('$EnvAgent',ok(_1235000930),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_1841448325)),','(is(_919528651,'+'(_1841448325,1)),','(out(context_id(_919528651)),','(no(open_session(_1333554944,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',_378610281,_1770038099)),','(out(open_session(_1841448325,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',basic,na)),out(context_request('$EnvAgent',ok(_1841448325),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df'))))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request('$EnvAgent',failed(is_login_required),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')))))
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(1)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(2)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1363218992,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',_2055353631,_625573901)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(1,'$EnvAgent','74efc929-dfb3-4f89-94f2-b3329407a4df',basic,na)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request('$EnvAgent',ok(1),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+..[ACCProvider]: ACC request accepted, ACC id is < 1 >
+..[WelcomeAgent]: Listening to incoming connections...
+..[WelcomeAgent]: --------------------------------------------------------------------------------
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request('$EnvAgent',ok(1),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df'), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',ok(1),basic,'74efc929-dfb3-4f89-94f2-b3329407a4df')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[OperationHandler (negotAgent)]: requesting op 4, get_basic_agent_class(Response), '@'('$ORG',':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Listening to incoming TuCSoN agents/nodes requests...
+....[OperationHandler ('$EnvAgent')]: requesting op 2, cmd(Type), '@'('$ENV',':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 0, negotAgent)]: Serving TucsonOperation request < id=12, type=4, tuple=get_basic_agent_class(Response) >...
+..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Serving TucsonOperation request < id=13, type=2, tuple=cmd(Type) >...
+..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext ('$ENV'@localhost:20504)]: INVOCATION phase: [ src: '$EnvAgent', op: in(cmd(Type)), trg: '@'('$ENV',':'(localhost,'20504')), tc: '@'('$ENV',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(get_basic_agent_class(Response_e0)),','(rd(basic_agent_class(_2070535130)),out(get_basic_agent_class(_2070535130))))
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: rd(basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(get_basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: get_basic_agent_class(basicAgentClass), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[OperationHandler (negotAgent)]: requesting op 3, is_rbac_installed(Result), '@'('$ORG',':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 0, negotAgent)]: Serving TucsonOperation request < id=16, type=3, tuple=is_rbac_installed(Result) >...
+..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: rd(is_rbac_installed(Result)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_rbac_installed(no), ie: [ [ src: negotAgent, op: rd(is_rbac_installed(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+[TuCSoN Service Helper]: Giving ACC 'EnhancedACC' to agent watchdog
+[TuCSoN Service Helper]: Booting TuCSoN bridge for agent watchdog@WebCrawlerPlatform
+..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
+..[WelcomeAgent]: Delegating ACCProvider received enter request...
+..[ACCProvider]: Processing ACC request...
+....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')),','(rd(open_session(_875564659,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',_510257746,_828692047)),','(no(context_request(watchdog,ok(_229995258),'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')),out(context_request(watchdog,ok(_875564659),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')),','(no(basic_agent_class(basic)),','(in(context_id(_1333035150)),','(is(_1435425163,'+'(_1333035150,1)),','(out(context_id(_1435425163)),','(no(open_session(_557852852,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',_1055288713,_1434319403)),','(out(open_session(_1333035150,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',basic,na)),out(context_request(watchdog,ok(_1333035150),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_911388954)),','(is(_1397347596,'+'(_911388954,1)),','(out(context_id(_1397347596)),','(no(open_session(_860958361,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',_1239424088,_1788460575)),','(out(open_session(_911388954,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',basic,na)),out(context_request(watchdog,ok(_911388954),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b'))))))))))
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
+....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(watchdog,failed(is_login_required),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')))))
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local in triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(2)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(3)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local no triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1090906793,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',_512737159,_1505194752)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(2,watchdog,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+......[Respect2PLibrary]: Local out triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(watchdog,ok(2),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+......[Respect2PLibrary]: Local rd triggered...
+....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
+..[ACCProvider]: ACC request accepted, ACC id is < 2 >
+....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(watchdog,ok(2),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b'), ie: [ [ src: context_manager, op: inp(context_request(watchdog,ok(2),basic,'3c486d3e-fe1a-4f87-8f06-6b90df635e2b')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+..[WelcomeAgent]: Listening to incoming connections...
+..[WelcomeAgent]: --------------------------------------------------------------------------------
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
+....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
+....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=19, type=11, tuple=hello(from(A),node(N)) >...
+[TuCSoN Node Service]: Booting new tuple centre < default >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
+..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
+....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=21, type=11, tuple=pong(A) >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
+..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
+....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=23, type=11, tuple=hello(from(A),node(N)) >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
+..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
+....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=25, type=11, tuple=pong(A) >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
+..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
+....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=27, type=11, tuple=hello(from(A),node(N)) >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
+..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
+....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=29, type=11, tuple=pong(A) >...
+..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
+....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
