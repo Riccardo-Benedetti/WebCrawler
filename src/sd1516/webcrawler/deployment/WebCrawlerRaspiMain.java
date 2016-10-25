@@ -5,6 +5,7 @@ import jade.core.ProfileImpl;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
+import sd1516.webcrawler.sysconstants.SysKb;
 
 public class WebCrawlerRaspiMain {
 	
@@ -17,20 +18,20 @@ public class WebCrawlerRaspiMain {
 		Profile p = new ProfileImpl();
 		ContainerController rc;
 		
-		p.setParameter(Profile.CONTAINER_NAME, "RaspiContainer"+raspiId);
+		p.setParameter(Profile.CONTAINER_NAME, SysKb.RASPI_CONT_NAME+raspiId);
 		p.setParameter(Profile.MAIN_HOST, tcIp);
-		p.setParameter(Profile.MAIN_PORT, "1099");
+		p.setParameter(Profile.MAIN_PORT, ""+SysKb.JADE_PORT);
 		p.setParameter(Profile.LOCAL_HOST, myIp);
-		p.setParameter(Profile.LOCAL_PORT, "1099");
-		p.setParameter("services", "it.unibo.tucson.jade.service.TucsonService");
+		p.setParameter(Profile.LOCAL_PORT, ""+SysKb.JADE_PORT);
+		p.setParameter("services", SysKb.T4J);
 		
 		rc = rt.createAgentContainer(p);
 		
 		try {
-			AgentController pingAgent = rc.createNewAgent("pRB"+raspiId, "sd1516.webcrawler.devices.PingAgent", new Object[]{myIp, tcIp});
+			AgentController pingAgent = rc.createNewAgent(SysKb.PING_NAME+raspiId, SysKb.PING_AGENT, new Object[]{myIp, tcIp});
 			pingAgent.start();
 			Thread.sleep(1000); //Per creare il Tucson Node solo una volta (Evita BindException)
-			AgentController managerAgent = rc.createNewAgent("mRB"+raspiId, "sd1516.webcrawler.devices.AgentsManager", new Object[]{raspiId, myIp, tcIp, rc});
+			AgentController managerAgent = rc.createNewAgent(SysKb.MANAGER_NAME+raspiId, SysKb.MANAGER_AGENT, new Object[]{raspiId, myIp, tcIp, rc});
 			managerAgent.start();
 		} catch (StaleProxyException e) {
 			e.printStackTrace();

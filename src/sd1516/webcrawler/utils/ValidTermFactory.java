@@ -20,7 +20,7 @@ public class ValidTermFactory {
 	public static Term getTermByString(String s){
 		Term t = null;
 		
-		if(s.contains("!CH39!")){ //se la stringa(titolo o url di una pub) contiene !CH39! ci diamo alle scienze umane
+		if(s.contains("!CH39!")){ //se la stringa (titolo o url di una pub) contiene !CH39! ci diamo alle scienze umane :)
 			throw new IllegalArgumentException();
 		}
 		
@@ -38,7 +38,6 @@ public class ValidTermFactory {
 	/**
 	 * metodo usato dal master per convertire un Term in stringa
 	 * */
-	
 	public static String getStringByTerm(Term t){
 		String s = t.toString(); //trasformo il term in stringa
 		if((s.charAt(0) == '[') && s.charAt(s.length()-1) == ']'){ //se il primo e l'ultimo carattere sono [ o ]

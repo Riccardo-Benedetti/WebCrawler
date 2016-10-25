@@ -45,7 +45,7 @@ public class WebCrawlerAgentManagerView extends JFrame {
 	private void initializeComponents() {
 		setResizable(false);
 		setSize(new Dimension(450, 300));
-		setTitle("Distributed and Fault-Tolerant Web Crawler - Developed by Riccardo Benedetti & Elisabetta Ramilli");
+		setTitle("Distributed and Fault-Tolerant Web Crawler");
 		getContentPane().setLayout(null);
 		
 		btnAddMaster = new JButton("Add Master");
@@ -122,28 +122,28 @@ public class WebCrawlerAgentManagerView extends JFrame {
 				if(success){
 					dlstMaster.addElement(agent);
 				}else{
-					JOptionPane.showMessageDialog(null, "Cannot add further Masters", "Add Master Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Cannot add more Masters", "Add Master operation DENIED", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			case WebCrawlerAgentManagerView.REMOVEMASTER:
 				if(success){
 					dlstMaster.remove(dlstMaster.indexOf(agent));
 				}else{
-					JOptionPane.showMessageDialog(null, "Cannot remove Master "+agent, "Remove Master Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Cannot remove Master "+ agent + " while waiting", "Remove Master operation DENIED", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			case WebCrawlerAgentManagerView.ADDWORKER:
 				if(success){
 					dlstWorker.addElement(agent);
 				}else{
-					JOptionPane.showMessageDialog(null, "Cannot add further Workers", "Add Worker Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Cannot add more Workers", "Add Worker operation DENIED", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			case WebCrawlerAgentManagerView.REMOVEWORKER:
 				if(success){
 					dlstWorker.remove(dlstWorker.indexOf(agent));
 				}else{
-					JOptionPane.showMessageDialog(null, "Cannot remove Worker "+agent, "Remove Worker Error", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Cannot remove Worker "+ agent + " while working", "Remove Worker operation DENIED", JOptionPane.WARNING_MESSAGE);
 				}
 				break;
 			default:

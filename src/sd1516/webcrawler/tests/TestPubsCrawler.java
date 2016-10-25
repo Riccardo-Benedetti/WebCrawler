@@ -1,7 +1,7 @@
 package sd1516.webcrawler.tests;
 
-import sd1516.webcrawler.pubscrawler.PubsCrawler;
 import sd1516.webcrawler.utils.Publication;
+import sd1516.webcrawler.utils.PubsCrawler;
 
 public class TestPubsCrawler {
 	

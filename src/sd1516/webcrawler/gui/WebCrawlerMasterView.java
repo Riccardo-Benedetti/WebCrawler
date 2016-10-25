@@ -43,7 +43,7 @@ public class WebCrawlerMasterView extends JFrame {
 	
 	private void initializeComponents(){
 		setResizable(false);
-		setTitle("Distributed and Fault-Tolerant Web Crawler - Developed by Riccardo Benedetti & Elisabetta Ramilli");
+		setTitle(myAgentMaster.getAgentName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,6 +140,6 @@ public class WebCrawlerMasterView extends JFrame {
 	 * alert di errore
 	 */
 	public void msgbox(String s){
-		JOptionPane.showMessageDialog(null, s, "ERROR IN SEARCH", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(null, s, "SEARCH HAS FAILED", JOptionPane.ERROR_MESSAGE);
 	}
 }
