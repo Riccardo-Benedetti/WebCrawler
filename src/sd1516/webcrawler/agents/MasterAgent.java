@@ -114,7 +114,9 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 			
 			try{
 				Term me = ValidTermFactory.getTermByString(MasterAgent.this.getAgentName());
-				hello = LogicTuple.parse("hello("+ "from("+ me +")," + "node("+ myIp +")" + ")");
+				Term host = ValidTermFactory.getTermByString(myIp);
+				
+				hello = LogicTuple.parse("hello("+ "from("+ me +")," + "node("+ host +")" + ")");
 				
 				MasterAgent.this.log("Hello from " + me + " (ip: " + myIp + ")");
 				

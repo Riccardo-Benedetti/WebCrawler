@@ -143,7 +143,8 @@ public class WorkerAgent extends Agent {
 			
 			try{
 				Term me = ValidTermFactory.getTermByString(WorkerAgent.this.getAgentName());
-				hello = LogicTuple.parse("hello("+ "from("+ me +")," + "node("+ myIp +")" + ")");
+				Term host = ValidTermFactory.getTermByString(myIp);
+				hello = LogicTuple.parse("hello("+ "from("+ me +")," + "node("+ host +")" + ")");
 				
 				WorkerAgent.this.log("Hello from " + me + " (ip: " + myIp + ")");
 				
@@ -218,8 +219,9 @@ public class WorkerAgent extends Agent {
 			
 			try {
 				Term me = ValidTermFactory.getTermByString(WorkerAgent.this.getAgentName());
+				Term k = ValidTermFactory.getTermByString(word);
 				Term to = ValidTermFactory.getTermByString(master);
-				working = LogicTuple.parse("working(" + "who(" + me + ")," + "keyword(" + word + ")," + "for(" + to + ")" + ")");
+				working = LogicTuple.parse("working(" + "who(" + me + ")," + "keyword(" + k + ")," + "for(" + to + ")" + ")");
 				final Out out = new Out(WorkerAgent.this.tcid, working);
 				WorkerAgent.this.bridge.asynchronousInvocation(out);
 				WorkerAgent.this.bridge.clearTucsonOpResult(this);
@@ -301,7 +303,8 @@ public class WorkerAgent extends Agent {
 				for(Publication pub : pubs){
 					Term title = ValidTermFactory.getTermByString(pub.getTitle());
 					Term url = ValidTermFactory.getTermByString(pub.getUrl());
-					result = LogicTuple.parse("publication(" + "master(" + master + ")," + "pub(" + new Struct(new Term[]{title,url}) + ")" + ")");
+					Term to = ValidTermFactory.getTermByString(master);
+					result = LogicTuple.parse("publication(" + "master(" + to + ")," + "pub(" + new Struct(new Term[]{title,url}) + ")" + ")");
 					final Out out = new Out(WorkerAgent.this.tcid, result);
 					WorkerAgent.this.bridge.asynchronousInvocation(out);
 					WorkerAgent.this.bridge.clearTucsonOpResult(this);
@@ -332,7 +335,7 @@ public class WorkerAgent extends Agent {
 			
 			try {
 				Term me = ValidTermFactory.getTermByString(WorkerAgent.this.getAgentName());
-				working = LogicTuple.parse("working(who('" + me + "'),keyword(K),for(M))");
+				working = LogicTuple.parse("working(who(" + me + "),keyword(K),for(M))");
 			} catch (InvalidLogicTupleException e) {
 				e.printStackTrace();
 				WorkerAgent.this.doDelete();
@@ -372,6 +375,7 @@ public class WorkerAgent extends Agent {
 	
 	@Override
 	public void doDelete(){
+		this.bridge.removePendingOp(Long.MAX_VALUE); 
 		super.doDelete();
 	}
 }

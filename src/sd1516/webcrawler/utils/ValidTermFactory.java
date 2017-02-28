@@ -43,7 +43,11 @@ public class ValidTermFactory {
 		if((s.charAt(0) == '[') && s.charAt(s.length()-1) == ']'){ //se il primo e l'ultimo carattere sono [ o ]
 			s = s.substring(1, s.length()-1); //prendo la sottostringa che non li comprende
 		}
-		s = s.substring(1, s.length()-1); //rimuovo anche gli apici
+		
+		if( ( s.charAt(0) == (char)39 ) && ( s.charAt(s.length()-1) == (char)39 ) ){ //se sia il primo sia l'ultimo carattere sono '
+			s = s.substring(1, s.length()-1); //prendo la sottostringa che non li comprende
+		}
+		
 		
 		if(s.contains("!CH39!")){ //se la stringa contiene la sequenza !CH39! (che era stata messa dal worker con il metodo sopra)
 			s = s.replaceAll("!CH39!", ""+(char)39); //la sostituisco con '
