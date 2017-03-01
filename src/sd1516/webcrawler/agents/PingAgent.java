@@ -38,6 +38,8 @@ public class PingAgent extends Agent {
 	private PingHandler pingBehaviour;
 	private PongHandler pongBehaviour;
 	
+	private boolean complete;
+	
 	@Override
 	public void setup(){
 		this.myIp = this.getArguments()[0].toString();
@@ -104,59 +106,39 @@ public class PingAgent extends Agent {
 		this.addBehaviour(pingPongBehaviour);
 	}
 	
-	private class HelloHandler extends Behaviour{
+	private class HelloHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = -2347267322990525065L;
 		
-		private boolean complete;
-		
-		public HelloHandler(){
-			this.complete = false;
-		}
-		
 		@Override
 		public void action() {
-			LogicTuple hello = null;
+			LogicTuple hello;
 			
 			try {
-				Term from = ValidTermFactory.getTermByString(PingAgent.this.getAgentName());
-				hello = LogicTuple.parse("hello("+ "from("+ from +")," + "node("+ myIp +")" + ")");
-			} catch (InvalidLogicTupleException e) {
-				e.printStackTrace();
-				PingAgent.this.doDelete();
-			}
-			
-			TucsonOpCompletionEvent res = null;
-			In in = new In(PingAgent.this.tcid, hello);
-			
-			try {
-				res = PingAgent.this.bridge.synchronousInvocation(in, Long.MAX_VALUE, this);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-				PingAgent.this.doDelete();
-			}
-			
-			if(res != null){
-				this.complete = true;
-			}else{
-				this.block();
-			}
-		}
-
-		@Override
-		public boolean done() {
-			return this.complete;
+				Term me = ValidTermFactory.getTermByString(PingAgent.this.getAgentName());
+				Term host = ValidTermFactory.getTermByString(myIp);
+				
+				hello = LogicTuple.parse("hello("+ "from("+ me +")," + "node("+ host +")" + ")");
+				
+				PingAgent.this.log("Hello from " + me + " (ip: " + myIp + ")");
+				
+				final Out out = new Out(tcid, hello);
+				PingAgent.this.bridge.asynchronousInvocation(out);
+				PingAgent.this.bridge.clearTucsonOpResult(this);
+				
+			} catch (InvalidLogicTupleException | ServiceException e) {
+	            e.printStackTrace();
+	            PingAgent.this.doDelete();
+	        }
 		}
 	}
 	
 	private class PingHandler extends Behaviour{
 
 		private static final long serialVersionUID = 5114937424007904657L;
-
-		private boolean complete;
 		
 		public PingHandler(){
-			this.complete = false;
+			PingAgent.this.complete = false;
 		}
 		
 		@Override
@@ -182,7 +164,8 @@ public class PingAgent extends Agent {
 			}
 			
 			if(res != null){
-				this.complete = true;
+				PingAgent.this.complete = true;
+				PingAgent.this.bridge.clearTucsonOpResult(this);
 			}else{
 				this.block();
 			}
@@ -190,7 +173,7 @@ public class PingAgent extends Agent {
 
 		@Override
 		public boolean done() {
-			return this.complete;
+			return PingAgent.this.complete;
 		}
 	}
 	
@@ -209,6 +192,8 @@ public class PingAgent extends Agent {
 				final Out out = new Out(PingAgent.this.tcid, pong);
 				PingAgent.this.bridge.asynchronousInvocation(out);
 				PingAgent.this.bridge.clearTucsonOpResult(this);
+				
+				PingAgent.this.complete = false;
 				
 			} catch (InvalidLogicTupleException | ServiceException e) {
 				e.printStackTrace();

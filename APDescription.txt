@@ -1,1 +1,1 @@
-( ap-description  :name "WebCrawlerPlatform" :ap-services (set ( ap-service  :name fipa.mts.mtp.http.std :type fipa.mts.mtp.http.std :addresses (sequence http://DESKTOP-0ISRON4:7778/acc))))
+( ap-description  :name "WebCrawlerPlatform" :ap-services (set ( ap-service  :name fipa.mts.mtp.http.std :type fipa.mts.mtp.http.std :addresses (sequence http://DESKTOP-0ISRON4.homenet.telecomitalia.it:7778/acc))))

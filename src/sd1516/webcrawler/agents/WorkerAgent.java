@@ -375,7 +375,7 @@ public class WorkerAgent extends Agent {
 	
 	@Override
 	public void doDelete(){
-		this.bridge.removePendingOp(Long.MAX_VALUE); 
+		this.bridge.removePendingOp(1); 
 		super.doDelete();
 	}
 }

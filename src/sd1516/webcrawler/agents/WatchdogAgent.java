@@ -50,6 +50,8 @@ public class WatchdogAgent extends Agent {
 	private List<String> crashedMasters;
 	private List<String> crashedWorkers;
 	
+	private boolean complete;
+	
 	@Override
 	public void setup(){
 		this.myIp = this.getArguments()[0].toString();
@@ -132,10 +134,8 @@ public class WatchdogAgent extends Agent {
 
 		private static final long serialVersionUID = 1014719482055275645L;
 		
-		private boolean complete;
-		
 		public AgentsHandler(){
-			this.complete = false;
+			WatchdogAgent.this.complete = false;
 		}
 		
 		@Override
@@ -165,7 +165,7 @@ public class WatchdogAgent extends Agent {
 							workerAgents.get(pingAgents.get(node)).add(agent);
 						}
 					}
-					this.complete = true;
+					WatchdogAgent.this.complete = true;
 					WatchdogAgent.this.bridge.clearTucsonOpResult(this);
 				}else{
 					this.block();
@@ -178,17 +178,12 @@ public class WatchdogAgent extends Agent {
 
 		@Override
 		public boolean done() {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			return complete;
+			return WatchdogAgent.this.complete;
 		}
 		
 	}
 	
-	public class PingHandler extends OneShotBehaviour {
+	public class PingHandler extends Behaviour {
 
 		private static final long serialVersionUID = 8902352611496973464L;
 
@@ -203,6 +198,8 @@ public class WatchdogAgent extends Agent {
 						
 					WatchdogAgent.this.bridge.asynchronousInvocation(out);
 					WatchdogAgent.this.bridge.clearTucsonOpResult(this);
+					
+					WatchdogAgent.this.complete = false;
 						
 				} catch (InvalidLogicTupleException | ServiceException e) {
 					e.printStackTrace();
@@ -210,17 +207,21 @@ public class WatchdogAgent extends Agent {
 				}
 			}
 		}
+
+		@Override
+		public boolean done() {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return true;
+		}
 	}
 	
 	public class PongHandler extends Behaviour {
 
 		private static final long serialVersionUID = -4747959074890049919L;
-
-		private boolean complete;
-		
-		public PongHandler(){
-			this.complete = false;
-		}
 		
 		@Override
 		public void action() {
@@ -243,12 +244,16 @@ public class WatchdogAgent extends Agent {
 					
 					for(String ag : pingAgents.values()){
 						if(!okAgents.contains(ag)){
-							crashedMasters.addAll(masterAgents.get(ag));
-							crashedWorkers.addAll(workerAgents.get(ag));
+							if(masterAgents.containsValue(ag)){
+								crashedMasters.addAll(masterAgents.get(ag));
+							}
+							if(workerAgents.containsValue(ag)){
+								crashedWorkers.addAll(workerAgents.get(ag));
+							}
 						}
 					}
 					
-					this.complete = true;
+					WatchdogAgent.this.complete = true;
 					WatchdogAgent.this.bridge.clearTucsonOpResult(this);
 				}else{
 					this.block();
@@ -261,7 +266,7 @@ public class WatchdogAgent extends Agent {
 
 		@Override
 		public boolean done() {
-			return complete;
+			return WatchdogAgent.this.complete;
 		}
 		
 	}
@@ -360,6 +365,7 @@ public class WatchdogAgent extends Agent {
 
 		@Override
 		public boolean done() {
+			WatchdogAgent.this.complete = false;
 			int nWorkers = crashedWorkers.size();
 			if(completed == nWorkers){
 				crashedWorkers.clear();
