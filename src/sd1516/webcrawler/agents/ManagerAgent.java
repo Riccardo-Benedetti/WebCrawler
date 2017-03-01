@@ -51,6 +51,8 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 	
 	private WebCrawlerAgentManagerView view;
 	
+	private boolean complete;
+	
 	@Override
 	public void setup(){
 		this.raspiId = Integer.parseInt(getArguments()[0].toString());
@@ -130,11 +132,10 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		private static final long serialVersionUID = -3946208213835102803L;
 
 		private String agentToRemove;
-		private boolean complete;
 		
 		public RemoveMasterHandler(String agentToRemove) {
 			this.agentToRemove = agentToRemove;
-			this.complete = false;
+			ManagerAgent.this.complete = false;
 		}
 
 		@Override
@@ -174,7 +175,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEMASTER);
 				}
 				ManagerAgent.this.bridge.clearTucsonOpResult(this);
-				this.complete = true;
+				ManagerAgent.this.complete = true;
 			}else{
 				this.block();
 			}
@@ -182,7 +183,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		
 		@Override
 		public boolean done(){
-			return this.complete;
+			boolean c = ManagerAgent.this.complete;
+			ManagerAgent.this.complete = false;
+			return c;
 		}
 	}
 
@@ -215,10 +218,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		private static final long serialVersionUID = 3494054411702657298L;
 
 		private String agentToRemove;
-		private boolean complete;
 		
 		public RemoveWorkerHandler(String agentToRemove) {
-			this.complete = false;
+			ManagerAgent.this.complete = false;
 			this.agentToRemove = agentToRemove;
 		}
 
@@ -259,7 +261,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEWORKER);
 				}
 				ManagerAgent.this.bridge.clearTucsonOpResult(this);
-				this.complete = true;
+				ManagerAgent.this.complete = true;
 			}else{
 				this.block();
 			}
@@ -267,7 +269,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 
 		@Override
 		public boolean done() {
-			return this.complete;
+			boolean c = ManagerAgent.this.complete;
+			ManagerAgent.this.complete = false;
+			return c;
 		}
 	}
 	

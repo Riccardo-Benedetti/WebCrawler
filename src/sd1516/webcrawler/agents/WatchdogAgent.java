@@ -44,6 +44,7 @@ public class WatchdogAgent extends Agent {
 	private RecoveryMastersHandler rmBehaviour;
 	private RecoveryWorkersHandler rwBehaviour;
 	
+	//foreach hashmap the key is the node ip and values are the agent names
 	private HashMap<String,String> pingAgents;
 	private HashMap<String,List<String>> masterAgents;
 	private HashMap<String,List<String>> workerAgents;
@@ -151,18 +152,19 @@ public class WatchdogAgent extends Agent {
 					for(LogicTuple lt : res.getTupleList()){
 						String agent = ValidTermFactory.getStringByTerm(lt.getArg(0).getArg(0).toTerm());
 						String node = ValidTermFactory.getStringByTerm(lt.getArg(1).getArg(0).toTerm());
+						System.out.println(agent+" A "+node);
 						if(agent.contains(SysKb.PING_NAME)){
 							pingAgents.put(node, agent);
+							masterAgents.put(node, new ArrayList<String>());
+							workerAgents.put(node, new ArrayList<String>());
 						}else if(agent.contains(SysKb.MASTER_NAME)){
-							if(!masterAgents.containsKey(node)){
-								masterAgents.put(pingAgents.get(node), new ArrayList<String>());
-							}
-							masterAgents.get(pingAgents.get(node)).add(agent);
+							List<String> m = masterAgents.get(node);
+							m.add(agent);
+							masterAgents.put(node,m);
 						}else if(agent.contains(SysKb.WORKER_NAME)){
-							if(!workerAgents.containsKey(node)){
-								workerAgents.put(pingAgents.get(node), new ArrayList<String>());
-							}
-							workerAgents.get(pingAgents.get(node)).add(agent);
+							List<String> w = workerAgents.get(node);
+							w.add(agent);
+							workerAgents.put(node,w);
 						}
 					}
 					WatchdogAgent.this.complete = true;
@@ -242,14 +244,11 @@ public class WatchdogAgent extends Agent {
 						okAgents.add(agent);
 					}
 					
-					for(String ag : pingAgents.values()){
-						if(!okAgents.contains(ag)){
-							if(masterAgents.containsValue(ag)){
-								crashedMasters.addAll(masterAgents.get(ag));
-							}
-							if(workerAgents.containsValue(ag)){
-								crashedWorkers.addAll(workerAgents.get(ag));
-							}
+					for(String node : pingAgents.keySet()){
+						if(!okAgents.contains(pingAgents.get(node))){
+							crashedMasters.addAll(masterAgents.get(node));
+							crashedWorkers.addAll(workerAgents.get(node));
+							pingAgents.remove(node);
 						}
 					}
 					
@@ -275,7 +274,7 @@ public class WatchdogAgent extends Agent {
 
 		private static final long serialVersionUID = 3916695949517290079L;
 		
-		private int completed;
+		private int completed; //number of masters crashed
 
 		public RecoveryMastersHandler(){
 			this.completed = 0;
@@ -308,10 +307,11 @@ public class WatchdogAgent extends Agent {
 		@Override
 		public boolean done() {
 			int nMasters = crashedMasters.size();
+			int c = this.completed;
 			if(completed == nMasters){
-				crashedMasters.clear();
+				this.completed = 0;
 			}
-			return this.completed == nMasters;
+			return c == nMasters;
 		}
 	}
 	
@@ -337,18 +337,21 @@ public class WatchdogAgent extends Agent {
 					TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inp, Long.MAX_VALUE, this);
 					
 					if(res != null){
+						//if it is not the tuple template...
 						if(!(ValidTermFactory.getStringByTerm(res.getTuple().getArg(1).getArg(0).toTerm()).equals("K") && 
 								ValidTermFactory.getStringByTerm(res.getTuple().getArg(2).getArg(0).toTerm()).equals("M"))){
 							
 							String master = ValidTermFactory.getStringByTerm(res.getTuple().getArg(2).getArg(0).toTerm());
 							
-							WatchdogAgent.this.bridge.clearTucsonOpResult(this);
-							
-							LogicTuple doneWD = LogicTuple.parse("done(who(watchdog)," + "keyword(K)," + "master(" + master + ")" + ")");
-							
-							final Out out = new Out(tcid, doneWD);
-							
-							WatchdogAgent.this.bridge.asynchronousInvocation(out);
+							if(crashedMasters.contains(master)){
+								WatchdogAgent.this.bridge.clearTucsonOpResult(this);
+								
+								LogicTuple doneWD = LogicTuple.parse("done(who(watchdog)," + "keyword(K)," + "master(" + master + ")" + ")");
+								
+								final Out out = new Out(tcid, doneWD);
+								
+								WatchdogAgent.this.bridge.asynchronousInvocation(out);
+							}
 						}
 						
 						completed++;
@@ -365,12 +368,14 @@ public class WatchdogAgent extends Agent {
 
 		@Override
 		public boolean done() {
-			WatchdogAgent.this.complete = false;
 			int nWorkers = crashedWorkers.size();
+			int c = this.completed;
 			if(completed == nWorkers){
 				crashedWorkers.clear();
+				crashedMasters.clear();
+				this.completed = 0;
 			}
-			return this.completed == nWorkers;
+			return c == nWorkers;
 		}
 	}
 	

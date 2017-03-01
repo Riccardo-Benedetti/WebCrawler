@@ -51,7 +51,7 @@ public class WorkerAgent extends Agent {
 	private String master;
 	private Publication[] pubs;
 	private boolean masterError;
-	private boolean workingsRemoved;
+	private boolean complete; // complete behaviour remove working tuple
 	
 	@Override
 	protected void setup(){
@@ -169,7 +169,7 @@ public class WorkerAgent extends Agent {
 			WorkerAgent.this.master = "";
 			WorkerAgent.this.pubs = null;
 			WorkerAgent.this.masterError = false;
-			WorkerAgent.this.workingsRemoved = false;
+			WorkerAgent.this.complete = false;
 			
 			LogicTuple keyword = null;
 			
@@ -353,7 +353,7 @@ public class WorkerAgent extends Agent {
 			
 			if(res!=null){
 				WorkerAgent.this.bridge.clearTucsonOpResult(this);
-				workingsRemoved = true;
+				WorkerAgent.this.complete = true;
 			}else{
 				this.block();
 			}
@@ -361,7 +361,7 @@ public class WorkerAgent extends Agent {
 
 		@Override
 		public boolean done() {
-			return workingsRemoved;
+			return WorkerAgent.this.complete;
 		}
 	}
 	

@@ -137,7 +137,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 
 		@Override
 		public void action() {
-			completed = keywords.length;
+			MasterAgent.this.completed = keywords.length;
 			
 			for(String kw : keywords){
 				LogicTuple keyword;
@@ -204,7 +204,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 				}
 				
 				MasterAgent.this.bridge.clearTucsonOpResult(this);
-				completed--;
+				MasterAgent.this.completed--;
 			}else{
 				this.block();
 			}
@@ -212,7 +212,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 
 		@Override
 		public boolean done() {
-			return completed==0;
+			return MasterAgent.this.completed==0;
 		}
 	}
 	
