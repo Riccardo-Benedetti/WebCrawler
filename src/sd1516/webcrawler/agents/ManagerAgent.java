@@ -27,6 +27,14 @@ import sd1516.webcrawler.interfaces.IWebCrawlerGui;
 import sd1516.webcrawler.sysconstants.SysKb;
 import sd1516.webcrawler.utils.ValidTermFactory;
 
+/*
+ * MANAGER AGENT
+ * This Agent is launched automatically by default and its purpose is to provide
+ * a flexible way to add and remove the masters and the workers of the current node
+ * dynamically.
+ * It guarantees also an internal fault tolerance avoiding the user to remove masters
+ * and workers while they are involved in a research.
+ */
 public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 
 	private static final long serialVersionUID = 5311512076350771813L;
@@ -40,9 +48,10 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 	private TucsonTupleCentreId tcid;
 	
 	private ContainerController rc;
+	
 	private int addedMasters, addedWorkers;
-	private HashMap<String,AgentController> masters;
-	private HashMap<String,AgentController> workers;
+	private HashMap<String,AgentController> masters; // Key: agent name, Value: agent controller
+	private HashMap<String,AgentController> workers; // Key: agent name, Value: agent controller
 	
 	private AddMasterHandler addMasterBehaviour;
 	private RemoveMasterHandler removeMasterBehaviour;
@@ -61,7 +70,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		this.rc = (ContainerController) this.getArguments()[3];
 		
 		this.addedMasters = 0;
-		this.addedMasters = 0;
+		this.addedWorkers = 0;
 		
 		this.masters = new HashMap<String,AgentController>();
 		this.workers = new HashMap<String,AgentController>();
@@ -104,6 +113,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		this.view.showGui();
 	}
 
+	/*
+	 * Add new Master Agent to current Container
+	 */
 	private class AddMasterHandler extends OneShotBehaviour {
 		
 		private static final long serialVersionUID = 1646415705381572773L;
@@ -128,6 +140,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 
+	/*
+	 * Remove existing Master Agent from current Container (ONLY IF IT IS IN IDLE STATE)
+	 */
 	private class RemoveMasterHandler extends Behaviour {
 		private static final long serialVersionUID = -3946208213835102803L;
 
@@ -142,6 +157,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		public void action() {
 			LogicTuple waiting = null;
 			
+			// check if the Agent is not currently involved in a research
 			try {
 				Term who = ValidTermFactory.getTermByString(this.agentToRemove+"@"+SysKb.PLATFORM);
 				waiting = LogicTuple.parse("waiting("+ "who(" + who + ")," + "keyword(K)" + ")");				
@@ -150,6 +166,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 				ManagerAgent.this.doDelete();
 			}
 			
+			// CHECK the tuple (DO NOT REMOVE!!!) so use the Read not suspending primitive instead of In
 			TucsonOpCompletionEvent rm = null;
 			Rdp rdp = new Rdp(ManagerAgent.this.tcid, waiting);
 			
@@ -162,9 +179,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 			
 			if(rm != null){
 				String keyword = ValidTermFactory.getStringByTerm(rm.getTuple().getArg(1).getArg(0).toTerm());
-				if(!keyword.equals("K")){
+				if(!keyword.equals("K")){ // no template -> tuple found -> removal failed
 					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEMASTER);
-				}else{
+				}else{ // result = template -> tuple not found -> removal operation allowed
 					try {
 						ManagerAgent.this.masters.get(agentToRemove).kill();
 					} catch (StaleProxyException e) {
@@ -189,6 +206,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 
+	/*
+	 * Add new Worker Agent to current Container
+	 */
 	private class AddWorkerHandler extends OneShotBehaviour {
 		
 		private static final long serialVersionUID = -1065051638657132090L;
@@ -213,6 +233,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 
+	/*
+	 * Remove existing Worker Agent from current Container (ONLY IF IT IS IN IDLE STATE)
+	 */
 	private class RemoveWorkerHandler extends Behaviour {
 		
 		private static final long serialVersionUID = 3494054411702657298L;
@@ -228,6 +251,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 		public void action() {
 			LogicTuple working = null;
 			
+			// check if the Agent is not currently involved in a research
 			try {
 				Term who = ValidTermFactory.getTermByString(this.agentToRemove+"@"+SysKb.PLATFORM);
 				working = LogicTuple.parse("working("+ "who(" + who + ")," + "keyword(K)," + "for(M)" + ")");				
@@ -236,6 +260,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 				ManagerAgent.this.doDelete();
 			}
 			
+			// CHECK the tuple (DO NOT REMOVE!!!) so use the Read not suspending primitive instead of In
 			TucsonOpCompletionEvent rw = null;
 			Rdp rdp = new Rdp(ManagerAgent.this.tcid, working);
 			
@@ -248,9 +273,9 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 			
 			if(rw != null){
 				String keyword = ValidTermFactory.getStringByTerm(rw.getTuple().getArg(1).getArg(0).toTerm());
-				if(!keyword.equals("K")){
+				if(!keyword.equals("K")){ // no template -> tuple found -> removal failed
 					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEWORKER);
-				}else{
+				}else{ // result = template -> tuple not found -> removal operation allowed
 					try {
 						ManagerAgent.this.workers.get(agentToRemove).kill();
 					} catch (StaleProxyException e) {
@@ -281,6 +306,13 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 	}
 	
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see jade.gui.GuiAgent#onGuiEvent(jade.gui.GuiEvent)
+	 * 
+	 * Detect the Event Type (which button has been pressed?) and trigger the
+	 * corresponding behavior
+	 */
 	protected void onGuiEvent(GuiEvent ev) {
 		this.view.disableInput();
 		

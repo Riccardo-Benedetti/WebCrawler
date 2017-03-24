@@ -32,6 +32,14 @@ import sd1516.webcrawler.sysconstants.SysKb;
 import sd1516.webcrawler.utils.Publication;
 import sd1516.webcrawler.utils.ValidTermFactory;
 
+/*
+ * MASTER AGENT
+ * This Agent provides a GUI in which the user can enter one or more keywords
+ * and then starts the crawling process.
+ * As soon as the Agent receives the result, it shows them in the output panel.
+ * After that, it enables the input field again to allow the user
+ * to perform other eventual researches. 
+ */
 public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 
 	private static final long serialVersionUID = 8507792839728793556L;
@@ -40,10 +48,12 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 	private String tcIp;
 	
 	private WebCrawlerMasterView view;
-	private String[] keywords;
-	private HashMap<Publication, Integer> publOccs; //Occorrenze di ogni Pubblicazione
+	private String[] keywords; // array of user input keywords
+	private HashMap<Publication, Integer> publOccs; // Key: publication, Value: occurrences
+	
+	// global auxiliary variables to coordinate the Behaviors
 	private int completed;
-	private boolean workerError, waitingsRemoved;
+	private boolean workerError, waitingsRemoved; 
 	
 	private HelloHandler helloBehaviour;
 	private OneShotBehaviour masterBehaviour;
@@ -103,7 +113,11 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		this.view.showGui();
 	}
 
-	
+	/*
+	 * System registration rules: 
+	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
+	 * it name and the node it belongs
+	 */
 	private class HelloHandler extends OneShotBehaviour {
 
 		private static final long serialVersionUID = 4533549206646776775L;
@@ -131,6 +145,9 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 	
+	/*
+	 * Put the Keyword and Waiting tuples into the Tuple Space
+	 */
 	private class KeywordsHandler extends OneShotBehaviour {
 
 		private static final long serialVersionUID = 2994251203600300007L;
@@ -166,6 +183,9 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 	
+	/*
+	 * Looking for completed workers
+	 */
 	private class DoneHandler extends Behaviour {
 
 		private static final long serialVersionUID = 2994251203600300007L;
@@ -175,6 +195,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 			
 			LogicTuple done = null;
 				
+			// get and remove only Done tuple addressed to me
 			try {
 				Term me = ValidTermFactory.getTermByString(MasterAgent.this.getAgentName());
 				done = LogicTuple.parse("done(who(A),keyword(K),master("+ me +"))");
@@ -197,8 +218,10 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 			if(dn!=null){
 				log("Received done");
 				String from = ValidTermFactory.getStringByTerm(dn.getTuple().getArg(0).getArg(0).toTerm());
+				
+				// What if the Done tuple come from Watchdog? A Worker has been crashed
 				if(from.equals(SysKb.WATCHDOG_NAME)){
-					workerError = true;
+					workerError = true; // signal error
 					String k = ValidTermFactory.getStringByTerm(dn.getTuple().getArg(1).getArg(0).toTerm());
 					log("ERROR! WORKER WITH KEYWORD: "+ k +" HAS FAILED");
 				}
@@ -216,6 +239,9 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 	
+	/*
+	 * Collecting the results
+	 */
 	private class ResultsHandler extends SimpleBehaviour {
 
 		private static final long serialVersionUID = 7624827275295163632L;
@@ -232,6 +258,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 				MasterAgent.this.doDelete();
 			}
 			
+			// get all publications addressed to me
 			TucsonOpCompletionEvent res = null;
 			final InAll inP = new InAll(MasterAgent.this.tcid, result);
 			
@@ -245,20 +272,28 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 			if(res!=null){
 				publOccs = new HashMap<Publication,Integer>();
 				for(LogicTuple lt : res.getTupleList()){
-					Struct pubStr = (Struct) lt.getArg(1).getArg(0).toTerm(); //getArg(1) è pub all'interno della tupla, getArg(0) è la struct P
-					String title = ValidTermFactory.getStringByTerm(pubStr.getTerm(0)); //getTerm(0) è il title nella struct
-					String url = ValidTermFactory.getStringByTerm(pubStr.getTerm(1)); //getTerm(1) è l'url nella struct
+					// getArg(1) is pub(P), getArg(1).getArg(0) is the Struct P
+					Struct pubStr = (Struct) lt.getArg(1).getArg(0).toTerm();
+					// getTerm(0) is the title of the Publication represented by Struct P
+					String title = ValidTermFactory.getStringByTerm(pubStr.getTerm(0));
+					// getTerm(1) is the url of the Publication represented by Struct P
+					String url = ValidTermFactory.getStringByTerm(pubStr.getTerm(1));
+					// building the Publication object
 					Publication pub = new Publication(title, url);
 					log("Received result: "+title);
 					boolean present = false;
 					for(Publication p : publOccs.keySet()){
-						if(pub.getUrl().equals(p.getUrl())){ //se l'url c'è già
-							publOccs.put(p, publOccs.get(p)+1); //incremento le occorrenze di quella pubblicazione
+						// Had already seen this Publication previously?
+						if(pub.getUrl().equals(p.getUrl())){
+							// Increase it occurrence value
+							publOccs.put(p, publOccs.get(p)+1);
 							present = true;
 						}
 					}
-					if(!present){ //se non è già presente
-						publOccs.put(pub, 1); //metto nell'hashmap la pubblicazione e metto l'occorrenza di quella pub
+					// Hadn't already seen this Publication previously?
+					if(!present){
+						// Create new key for it and initialize it occurrences value to 1
+						publOccs.put(pub, 1);
 					}
 					MasterAgent.this.bridge.clearTucsonOpResult(this);
 				}
@@ -273,6 +308,9 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 	
+	/*
+	 * Remove the Waiting tuples previously added
+	 */
 	private class RemWaitingsHandler extends SimpleBehaviour {
 
 		private static final long serialVersionUID = 6936753012927760015L;
@@ -281,6 +319,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		public void action() {
 			LogicTuple waiting = null;
 			
+			// remove only the Waiting tuples belonging to me
 			try {
 				Term me = ValidTermFactory.getTermByString(MasterAgent.this.getAgentName());
 				waiting = LogicTuple.parse("waiting(who(" + me + "),keyword(K))");
@@ -313,6 +352,14 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		}
 	}
 	
+	/*
+	 * Elaborate and show results (only if all workers have been terminated correctly)
+	 * 
+	 * NB: Why, in case of worker error, we get anyway the Publications? Why
+	 *     get Publications while we already know they won't be showed?
+	 *     To keep the Tuple Space as clean as possible
+	 * 
+	 */
 	private class UpdateViewHandler extends OneShotBehaviour {
 
 		private static final long serialVersionUID = 4073088775775699286L;
@@ -321,23 +368,27 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 		public void action() {
 			
 			/**
-			 * la ricerca è di tipo AND: prendiamo solo le pubs che contengono tutte le parole chiave inserite dall'utente, 
-			 * cioè le entry dell'hashmap che hanno value = keywords.length. 
-			 * Se una pubblicazione contiene solo una parte delle parole chiave e non tutte viene rimossa dalla hashtable
+			 * We have chosen to implement an AND-crawler: the Publication returned are only
+			 * those that contain ALL the input Keywords. 
+			 * That means we remove the Publication which have occurrences less than the number of keywords. 
 			 * */
 			
-			//itero la hashmap finchè c'è un elemento successivo
+			// Iterating the results...
 			for(Iterator<Map.Entry<Publication, Integer>> it = publOccs.entrySet().iterator(); it.hasNext(); ) {
-				Map.Entry<Publication, Integer> entry = it.next(); //entry è il prossimo elemento
-				if(entry.getValue()<keywords.length) { //Se il valore della entry è minore del numero totale di keywords
-					it.remove(); //la rimuovo
+				Map.Entry<Publication, Integer> entry = it.next();
+				// remove it if its occurrences value doesn't match the number of keywords
+				if(entry.getValue()<keywords.length) {
+					it.remove();
 				}
 			}
 			Publication[] resPubs = publOccs.keySet().toArray(new Publication[publOccs.size()]);
 			
 			if(!workerError){
+				// If everything is fine, then show the results
 				MasterAgent.this.view.updateView(resPubs);
 			}else{
+				// In case of worker failure, the results are incomplete and so incorrect...
+				// ...then throw a MsgBox error instead of showing them.
 				MasterAgent.this.view.msgbox("Search failure caused by one or more crashed workers");
 			}
 			
@@ -388,10 +439,16 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 					fsm.registerState(rBehaviour, "ResultsHandler");
 					fsm.registerState(rwBehaviour, "RemWaitingsHandler");
 					fsm.registerLastState(uvBehaviour, "UpdateViewHandler");
+					// First of all say "Hello" to Watchdog Agent (see above at setup method) and wait for user input...
+					// ...then put the Keyword tuples to the Tuple space and wait...
 					fsm.registerDefaultTransition("KeywordsHandler", "DoneHandler");
+					// ...then get the Done tuples from the completed Workers...
 					fsm.registerDefaultTransition("DoneHandler", "ResultsHandler");
+					// ...then get all the results(publications) from the Tuple spaces...
 					fsm.registerDefaultTransition("ResultsHandler", "RemWaitingsHandler");
+					// ...then remove the Waiting tuples...
 					fsm.registerDefaultTransition("RemWaitingsHandler", "UpdateViewHandler");
+					// ...and finally show the results trough the GUI and wait for next research
 				}
 			};
 			

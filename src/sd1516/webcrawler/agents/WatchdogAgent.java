@@ -26,6 +26,17 @@ import jade.core.behaviours.OneShotBehaviour;
 import sd1516.webcrawler.sysconstants.SysKb;
 import sd1516.webcrawler.utils.ValidTermFactory;
 
+/*
+ * WATCHDOG AGENT
+ * This Agent is essential to guarantee all the network fault tolerance and is 
+ * supposed that never will crash.
+ * It keeps track of all nodes registered in the system, and their own Agents.
+ * It periodically checks that each node is effectively working correctly by 
+ * exchanging Ping-Pong tuples with their relative Ping Agents.
+ * If it doesn't receive no answer from a particular Ping Agent, it triggers
+ * a fault tolerance procedure to exclude the crashed node (and its Agents),
+ * from the system without compromising the overall system integrity.
+ */
 public class WatchdogAgent extends Agent {
 
 	private static final long serialVersionUID = 6781364993606695807L;
@@ -44,10 +55,10 @@ public class WatchdogAgent extends Agent {
 	private RecoveryMastersHandler rmBehaviour;
 	private RecoveryWorkersHandler rwBehaviour;
 	
-	//foreach hashmap the key is the node ip and values are the agent names
-	private HashMap<String,String> pingAgents;
-	private HashMap<String,List<String>> masterAgents;
-	private HashMap<String,List<String>> workerAgents;
+	private HashMap<String,String> pingAgents; // Key = node IP, Value = agent name
+	private HashMap<String,List<String>> masterAgents; // Key = node IP, Value = master agent names
+	private HashMap<String,List<String>> workerAgents; // Key = node IP, Value = worker agent names
+	
 	private List<String> crashedMasters;
 	private List<String> crashedWorkers;
 	
@@ -120,17 +131,29 @@ public class WatchdogAgent extends Agent {
 				fsm.registerState(poBehaviour, "PongHandler");
 				fsm.registerState(rmBehaviour, "RecoveryMastersHandler");
 				fsm.registerState(rwBehaviour, "RecoveryWorkersHandler");
+				
+				// Check for new nodes/Agents...
 				fsm.registerDefaultTransition("AgentsHandler", "PingHandler");
+				// ...then ping all the nodes and wait 2 seconds...
 				fsm.registerDefaultTransition("PingHandler", "PongHandler");
+				// ...then get all the pong responses...
 				fsm.registerDefaultTransition("PongHandler", "RecoveryMastersHandler");
+				// ...then recover eventual crashed masters...
 				fsm.registerDefaultTransition("RecoveryMastersHandler", "RecoveryWorkersHandler");
+				// ...then recover eventual crashed workers...
 				fsm.registerDefaultTransition("RecoveryWorkersHandler", "AgentsHandler");
+				// ...finally restart the cycle
 			}
 		};
 		
 		this.addBehaviour(watchdogBehaviour);
 	}
 	
+	/*
+	 * System registration rules: 
+	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
+	 * it name and the node it belongs
+	 */
 	public class AgentsHandler extends Behaviour {
 
 		private static final long serialVersionUID = 1014719482055275645L;
@@ -144,6 +167,7 @@ public class WatchdogAgent extends Agent {
 			try {
 				LogicTuple hello = LogicTuple.parse("hello(from(A),node(N))");
 				
+				// get and remove all the "Hellos"
 				final InAll inAll = new InAll(tcid, hello);
 				
 				TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inAll, Long.MAX_VALUE, this);
@@ -152,16 +176,24 @@ public class WatchdogAgent extends Agent {
 					for(LogicTuple lt : res.getTupleList()){
 						String agent = ValidTermFactory.getStringByTerm(lt.getArg(0).getArg(0).toTerm());
 						String node = ValidTermFactory.getStringByTerm(lt.getArg(1).getArg(0).toTerm());
-						System.out.println(agent+" A "+node);
+						
+						// is that a Ping Agent? That's means there is a new node in the system.
+						// Creating a new key entry for each HashMap structure
 						if(agent.contains(SysKb.PING_NAME)){
-							pingAgents.put(node, agent);
-							masterAgents.put(node, new ArrayList<String>());
-							workerAgents.put(node, new ArrayList<String>());
-						}else if(agent.contains(SysKb.MASTER_NAME)){
-							List<String> m = masterAgents.get(node);
+							pingAgents.put(node, agent); // new node and ping name
+							masterAgents.put(node, new ArrayList<String>()); // initially none masters
+							workerAgents.put(node, new ArrayList<String>()); // initially none workers
+						}
+						// is that a Master Agent? That's means there its node is already registered.
+						// Appending new Master at the list values corresponding.
+						else if(agent.contains(SysKb.MASTER_NAME)){
+							List<String> m = masterAgents.get(node); 
 							m.add(agent);
-							masterAgents.put(node,m);
-						}else if(agent.contains(SysKb.WORKER_NAME)){
+							masterAgents.put(node,m); // 
+						}
+						// is that a Worker Agent? That's means there its node is already registered.
+						// Appending new Worker at the list values corresponding.
+						else if(agent.contains(SysKb.WORKER_NAME)){
 							List<String> w = workerAgents.get(node);
 							w.add(agent);
 							workerAgents.put(node,w);
@@ -185,6 +217,9 @@ public class WatchdogAgent extends Agent {
 		
 	}
 	
+	/*
+	 * Ping all the nodes and wait 2 seconds for the responses
+	 */
 	public class PingHandler extends Behaviour {
 
 		private static final long serialVersionUID = 8902352611496973464L;
@@ -213,6 +248,8 @@ public class WatchdogAgent extends Agent {
 		@Override
 		public boolean done() {
 			try {
+				// we have to provide a large time to allows the nodes
+				// to handle the pings and elaborate the pongs
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -221,6 +258,9 @@ public class WatchdogAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Get all of Pongs in the tuple space
+	 */
 	public class PongHandler extends Behaviour {
 
 		private static final long serialVersionUID = -4747959074890049919L;
@@ -235,7 +275,10 @@ public class WatchdogAgent extends Agent {
 				TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inAll, Long.MAX_VALUE, this);
 				
 				if(res != null){
+					// preparing the structure for the checked Agents
 					List<String> okAgents = new ArrayList<String>();
+					
+					// preparing the structures for the unreachable Agents
 					crashedMasters = new ArrayList<String>();
 					crashedWorkers = new ArrayList<String>();
 					
@@ -245,7 +288,9 @@ public class WatchdogAgent extends Agent {
 					}
 					
 					for(String node : pingAgents.keySet()){
+						// A Ping Agent has not answered?
 						if(!okAgents.contains(pingAgents.get(node))){
+							// Which masters and workers belong to it? Add 'em to the crashed lists
 							crashedMasters.addAll(masterAgents.get(node));
 							crashedWorkers.addAll(workerAgents.get(node));
 							pingAgents.remove(node);
@@ -270,30 +315,53 @@ public class WatchdogAgent extends Agent {
 		
 	}
 	
+	/*
+	 * Remove the crashed masters before the workers, to avoid the eventuality
+	 * that a worker could see the Waiting Tuple of a crashed master
+	 */
 	public class RecoveryMastersHandler extends Behaviour {
 
 		private static final long serialVersionUID = 3916695949517290079L;
 		
-		private int completed; //number of masters crashed
+		private int completed; // repeat the behavior for each crashed master
+		
+		// for each crashed master we have to perform 2 removal:
+		// first the Waiting tuples and then the Keyword tuples
+		private boolean secondRemoval;
 
 		public RecoveryMastersHandler(){
 			this.completed = 0;
+			this.secondRemoval = false;
 		}
 		
 		@Override
 		public void action() {
 			if(!crashedMasters.isEmpty()){
-				try {
+				try { // For each crashed master...
 					Term who = ValidTermFactory.getTermByString(crashedMasters.get(completed));
-					LogicTuple waiting = LogicTuple.parse("waiting(who(" + who + "), keyword(K)" + ")");
+					TucsonOpCompletionEvent res;
 					
-					final InAll inAll = new InAll(tcid, waiting);
-					
-					TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inAll, Long.MAX_VALUE, this);
-					
+					if(!secondRemoval){
+						// ...remove all the eventual Waiting tuples...
+						LogicTuple waiting = LogicTuple.parse("waiting(who(" + who + "), keyword(K)" + ")");
+						
+						final InAll inAllW = new InAll(tcid, waiting);
+						
+						res = WatchdogAgent.this.bridge.synchronousInvocation(inAllW, Long.MAX_VALUE, this);
+					}else{
+						// ...and then remove all the eventual Keyword tuples...
+						LogicTuple keyword = LogicTuple.parse("keyword(value(K), from(" + who + ")" + ")");
+						
+						final InAll inAllK = new InAll(tcid, keyword);
+						
+						res = WatchdogAgent.this.bridge.synchronousInvocation(inAllK, Long.MAX_VALUE, this);
+					}
 					if(res != null){
-						this.completed++;
 						WatchdogAgent.this.bridge.clearTucsonOpResult(this);
+						if(secondRemoval){
+							this.completed++;
+						}
+						secondRemoval = !secondRemoval;
 					}else{
 						this.block();
 					}
@@ -315,11 +383,14 @@ public class WatchdogAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Remove the crashed workers
+	 */
 	public class RecoveryWorkersHandler extends Behaviour {
 		
 		private static final long serialVersionUID = 2328352115137198379L;
 		
-		private int completed;
+		private int completed; // repeat the behavior for each crashed worker
 
 		public RecoveryWorkersHandler(){
 			this.completed = 0;
@@ -337,15 +408,20 @@ public class WatchdogAgent extends Agent {
 					TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inp, Long.MAX_VALUE, this);
 					
 					if(res != null){
-						//if it is not the tuple template...
+						// ...remove all the eventual Waiting tuples...
+						
+						//...but what if a master is waiting just for these workers?...
 						if(!(ValidTermFactory.getStringByTerm(res.getTuple().getArg(1).getArg(0).toTerm()).equals("K") && 
 								ValidTermFactory.getStringByTerm(res.getTuple().getArg(2).getArg(0).toTerm()).equals("M"))){
 							
+							//...first get the master name...
 							String master = ValidTermFactory.getStringByTerm(res.getTuple().getArg(2).getArg(0).toTerm());
 							
-							if(crashedMasters.contains(master)){
+							//...then send him a Done tuple replacing that it was supposed to send by the crashed worker
+							if(!crashedMasters.contains(master)){
 								WatchdogAgent.this.bridge.clearTucsonOpResult(this);
 								
+								// the master will detect that this Done tuple has arrived from Watchdog and will handle it differently
 								LogicTuple doneWD = LogicTuple.parse("done(who(watchdog)," + "keyword(K)," + "master(" + master + ")" + ")");
 								
 								final Out out = new Out(tcid, doneWD);

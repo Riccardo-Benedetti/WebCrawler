@@ -27,6 +27,15 @@ import sd1516.webcrawler.utils.Publication;
 import sd1516.webcrawler.utils.PubsCrawler;
 import sd1516.webcrawler.utils.ValidTermFactory;
 
+/*
+ * WORKER AGENT
+ * This Agent starts monitoring the Tuple Space looking for new keywords from 
+ * Master Agent(s).
+ * Each Worker Agent grabs a keyword at a time and search all of Apice publications
+ * that match with it.
+ * As soon as the results are ready, it put them back to the Tuple Space and restart
+ * looking for others keywords.
+ */
 public class WorkerAgent extends Agent {
 
 	private static final long serialVersionUID = 6284709727420003881L;
@@ -47,11 +56,14 @@ public class WorkerAgent extends Agent {
 	private ReturnPubsHandler rpBehaviour;
 	private RemoveWorkingHandler rwBehaviour;
 	
-	private String word;
-	private String master;
-	private Publication[] pubs;
-	private boolean masterError;
-	private boolean complete; // complete behaviour remove working tuple
+	private String word; // the keyword grabbed from Tuple Space
+	private String master; // the Master reference to whom we will return the results
+	private Publication[] pubs; // the results of the current worker
+	
+	// global auxiliary variables to coordinate the Behaviors
+	private boolean masterError; 
+	private boolean complete;
+	//private TucsonOpCompletionEvent pendingOp;
 	
 	@Override
 	protected void setup(){
@@ -119,13 +131,23 @@ public class WorkerAgent extends Agent {
 				fsm.registerState(cmBehaviour, "CheckMasterHandler");
 				fsm.registerState(rpBehaviour, "ReturnPubsHandler");
 				fsm.registerState(rwBehaviour, "RemoveWorkingHandler");
+				// First of all say "Hello" to Watchdog Agent (see above)...
+				// ...then look for a keyword in the Tuple Space and get it...
 				fsm.registerDefaultTransition("RetrieveKeywordsHandler", "WorkingHandler");
+				// ...then emit the Working tuple to signal you are in busy state...
 				fsm.registerDefaultTransition("WorkingHandler", "SearchPubsHandler");
+				// ...then perform your research...
 				fsm.registerDefaultTransition("SearchPubsHandler", "CheckMasterHandler");
+				// ...then, before upload the result to the Tuple Space, check the Master state...
 				fsm.registerTransition("CheckMasterHandler", "ReturnPubsHandler", 1);
+				// ...the Master still waiting, so upload the results...
 				fsm.registerDefaultTransition("ReturnPubsHandler", "RemoveWorkingHandler");
+				// ...the Master has been crashed meanwhile the Worker was working, so
+				// there's no need to return the results...
 				fsm.registerTransition("CheckMasterHandler", "RemoveWorkingHandler", 0);
+				// ...Finally, in any case remove the Working tuples...
 				fsm.registerDefaultTransition( "RemoveWorkingHandler", "RetrieveKeywordsHandler");
+				// ...and look for the next keyword
 				
 			}
 		};
@@ -133,6 +155,11 @@ public class WorkerAgent extends Agent {
 		this.addBehaviour(workerBehaviour);
 	}
 	
+	/*
+	 * System registration rules: 
+	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
+	 * it name and the node it belongs
+	 */
 	private class HelloHandler extends OneShotBehaviour {
 
 		private static final long serialVersionUID = -9142113698067729455L;
@@ -159,12 +186,16 @@ public class WorkerAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Looking for new keyword...
+	 */
 	private class RetrieveKeywordsHandler extends Behaviour{
 
 		private static final long serialVersionUID = -1150194599564407339L;
 
 		@Override
 		public void action() {
+			// reset all the structures
 			WorkerAgent.this.word = "";
 			WorkerAgent.this.master = "";
 			WorkerAgent.this.pubs = null;
@@ -186,18 +217,20 @@ public class WorkerAgent extends Agent {
 			
 			try {
 				res = WorkerAgent.this.bridge.synchronousInvocation(in, Long.MAX_VALUE, this);
+				//WorkerAgent.this.pendingOp = WorkerAgent.this.bridge.GETPENDINGOP!!!!;
 			} catch (ServiceException e) {
 				e.printStackTrace();
 				WorkerAgent.this.doDelete();
 			}
 			
 			if(res != null){
+				// Save the keyword and the master reference
 				word = ValidTermFactory.getStringByTerm(res.getTuple().getArg(0).getArg(0).toTerm());
 				master = ValidTermFactory.getStringByTerm(res.getTuple().getArg(1).getArg(0).toTerm());
 				
 				WorkerAgent.this.log("Retrieving keyword ("+ word + ") from " + master);
 				
-				WorkerAgent.this.bridge.clearTucsonOpResult(this); //Pulisce la struttura per non prendere più volte lo stesso risultato
+				WorkerAgent.this.bridge.clearTucsonOpResult(this);
 			}else{
 				this.block();
 			}
@@ -209,14 +242,19 @@ public class WorkerAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Signal Working state
+	 */
 	private class WorkingHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = 2211911919984358284L;
 
 		@Override
 		public void action() {
+			//WorkerAgent.this.pendingOp = null; TODO
 			LogicTuple working = null;
 			
+			// Signal that "I, the Worker W, have taken the word K and I'm working for Master M"
 			try {
 				Term me = ValidTermFactory.getTermByString(WorkerAgent.this.getAgentName());
 				Term k = ValidTermFactory.getTermByString(word);
@@ -233,6 +271,9 @@ public class WorkerAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Main Worker behavior (IT MIGHT TAKE A SIGNIFICATIVE AMOUNT OF TIME!!!)
+	 */
 	private class SearchPubsHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = -1645830099144688951L;
@@ -244,6 +285,9 @@ public class WorkerAgent extends Agent {
 		
 	}
 	
+	/*
+	 * Check if my Master is fine and still waiting
+	 */
 	private class CheckMasterHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = 1197354630339942978L;
@@ -252,6 +296,7 @@ public class WorkerAgent extends Agent {
 		public void action() {
 			LogicTuple waiting = null;
 			
+			// Is still there the Master M waiting for keyword K?
 			try {
 				Term to = ValidTermFactory.getTermByString(master);
 				waiting = LogicTuple.parse("waiting(who(" + to + ")," + "keyword(K)"+ ")");
@@ -260,8 +305,8 @@ public class WorkerAgent extends Agent {
 				WorkerAgent.this.doDelete();
 			}
 			
+			// Checking for a tuple means NO REMOVING it, so use Read not suspensive primitive instead of In
 			TucsonOpCompletionEvent res = null;
-			
 			final Rdp rdp = new Rdp(WorkerAgent.this.tcid, waiting);
 			
 			try {
@@ -273,10 +318,11 @@ public class WorkerAgent extends Agent {
 			
 			if(res != null){
 				String keyword = ValidTermFactory.getStringByTerm(res.getTuple().getArg(1).getArg(0).toTerm());
+				// If I got the tuple templates, so I didn't find the tuple I was searching for
 				if(keyword.equals("K")){
-					masterError = true;
+					masterError = true; // Signal Master error
 				}
-				WorkerAgent.this.bridge.clearTucsonOpResult(this); //Pulisce la struttura per non prendere più volte lo stesso risultato
+				WorkerAgent.this.bridge.clearTucsonOpResult(this);
 			}else{
 				this.block();
 			}
@@ -284,6 +330,7 @@ public class WorkerAgent extends Agent {
 		
 		@Override
 		public int onEnd(){
+			// Select next Behavior referring to the presence or not of a Master error
 			if(masterError){
 				return 0;
 			}
@@ -292,6 +339,9 @@ public class WorkerAgent extends Agent {
 		
 	}
 	
+	/*
+	 * No master error, so return the result as agreed
+	 */
 	private class ReturnPubsHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = 1144167084871453507L;
@@ -300,6 +350,8 @@ public class WorkerAgent extends Agent {
 		public void action() {
 			try {
 				LogicTuple result = null;
+				
+				// Build a tuple for each Publication result and send it to the tuple space
 				for(Publication pub : pubs){
 					Term title = ValidTermFactory.getTermByString(pub.getTitle());
 					Term url = ValidTermFactory.getTermByString(pub.getUrl());
@@ -311,6 +363,8 @@ public class WorkerAgent extends Agent {
 				}
 				
 				LogicTuple done = null;
+				
+				// Finalize sending also a Done tuple to signal my successful completion
 				Term me = ValidTermFactory.getTermByString(WorkerAgent.this.getAgentName());
 				Term to = ValidTermFactory.getTermByString(master);
 				done = LogicTuple.parse("done(who(" + me + ")," + "keyword(K)," + "master("+ to +")" + ")");
@@ -325,6 +379,9 @@ public class WorkerAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Finally, clean the Tuple Space removing the Working tuple
+	 */
 	private class RemoveWorkingHandler extends SimpleBehaviour {
 
 		private static final long serialVersionUID = 8173896219779085865L;
@@ -375,7 +432,11 @@ public class WorkerAgent extends Agent {
 	
 	@Override
 	public void doDelete(){
-		this.bridge.removePendingOp(1); 
-		super.doDelete();
+		//TODO
+		
+		/*if(this.pendingOp != null){
+			this.bridge.removePendingOp(this.pendingOp.getOpId().getId());
+		}
+		super.doDelete();*/
 	}
 }

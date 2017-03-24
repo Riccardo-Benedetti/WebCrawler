@@ -22,6 +22,12 @@ import jade.core.behaviours.OneShotBehaviour;
 import sd1516.webcrawler.sysconstants.SysKb;
 import sd1516.webcrawler.utils.ValidTermFactory;
 
+/*
+ * PING AGENT
+ * This Agent is responsible to guarantee the network fault tolerance.
+ * Each node has a Ping Agent that interact with the centralized Watchdog Agent by
+ * exchanging with him periodic Ping-Pong tuples.
+ */
 public class PingAgent extends Agent {
 	
 	private static final long serialVersionUID = 1669384818587433845L;
@@ -97,15 +103,25 @@ public class PingAgent extends Agent {
 				fsm.registerFirstState(helloBehaviour, "HelloHandler");
 				fsm.registerState(pingBehaviour, "PingHandler");
 				fsm.registerState(pongBehaviour, "PongHandler");
+				
+				// First of all say "Hello" to Watchdog Agent...
 				fsm.registerDefaultTransition("HelloHandler", "PingHandler");
+				// ...then get the Ping...
 				fsm.registerDefaultTransition("PingHandler", "PongHandler");
+				// ...then throw the Pong...
 				fsm.registerDefaultTransition("PongHandler", "PingHandler");
+				// ...then get next Ping... and so on...
 			}
 		};
 		
 		this.addBehaviour(pingPongBehaviour);
 	}
 	
+	/*
+	 * System registration rules: 
+	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
+	 * it name and the node it belongs
+	 */
 	private class HelloHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = -2347267322990525065L;
@@ -133,6 +149,9 @@ public class PingAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Get the Ping tuple from the Tuple Space
+	 */
 	private class PingHandler extends Behaviour{
 
 		private static final long serialVersionUID = 5114937424007904657L;
@@ -145,6 +164,7 @@ public class PingAgent extends Agent {
 		public void action() {
 			LogicTuple ping = null;
 			
+			// Get only the Ping tuple addressed to me
 			try {
 				Term me = ValidTermFactory.getTermByString(PingAgent.this.getAgentName());
 				ping = LogicTuple.parse("ping(" + me + ")");
@@ -177,6 +197,9 @@ public class PingAgent extends Agent {
 		}
 	}
 	
+	/*
+	 * Throw the Pong tuple to the Tuple Space
+	 */
 	private class PongHandler extends OneShotBehaviour{
 
 		private static final long serialVersionUID = 5421907147009755279L;
@@ -185,6 +208,7 @@ public class PingAgent extends Agent {
 		public void action() {
 			LogicTuple pong;
 			
+			// it is importa to include my "signature" to the Pong tuple
 			try {
 				Term me = ValidTermFactory.getTermByString(PingAgent.this.getAgentName());
 				pong = LogicTuple.parse("pong(" + me + ")");
