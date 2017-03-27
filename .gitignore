@@ -1,2 +1,6 @@
 bin/
-jars/libs/APDescription.txt/log.txt/
+
+jars/
+libs/
+APDescription.txt
+log.txt
