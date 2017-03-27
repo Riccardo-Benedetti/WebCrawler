@@ -1,5 +1,20 @@
 package sd1516.webcrawler.utils;
 
+/**
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
+ */
+
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
@@ -16,47 +31,59 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import sd1516.webcrawler.sysconstants.SysKb;
 
+/*
+ * Pubs Crawler is the most computationally expensive part, it has been
+ * optimized as much as possible assigning an independent task for every year
+ * of publications.
+ * 
+ * To perform the crawling operation it has been used the Jsoup library
+ */
 public class PubsCrawler {
 	
 	public static Publication[] getPubsByKeyword(String keyword) {
 		ExecutorService exec = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), Runtime.getRuntime().availableProcessors(), 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(30));
 		
-		List<Publication> results = new ArrayList<Publication>(); //lista pubblicazioni trovate
-		List<Future<List<Publication>>> futures = new ArrayList<Future<List<Publication>>>(); //lista di future che tornerà una lista di pubblicazioni
+		List<Publication> results = new ArrayList<Publication>(); // list of publications found
+		List<Future<List<Publication>>> futures = new ArrayList<Future<List<Publication>>>(); // list of futures that each return a publications list
 		
 		try {
-			Document webHome = Jsoup.connect(SysKb.APICE_HOME).timeout(Integer.MAX_VALUE).get(); //connessione al sito "Spazio delle Pubblicazioni ApiCE"
+			// connecting to the page named "Spazio delle Pubblicazioni ApiCE"
+			Document webHome = Jsoup.connect(SysKb.APICE_HOME).timeout(Integer.MAX_VALUE).get();
 			
-			int year = SysKb.APICE_STARTING_YEAR; //anno delle prime pubblicazioni
+			 // starting from the first year...
+			int year = SysKb.APICE_STARTING_YEAR;
 			
-			while(!webHome.select("[href$="+year+"]").isEmpty()){ //itera sugli href che finiscono con un anno compreso tra 1980 e l'anno corrente
+			while(!webHome.select("[href$="+year+"]").isEmpty()){ // iterate the list of all the years from 1980 till today
 			
-				Document pubsPerYear = Jsoup.connect(SysKb.APICE_HOME+"PapersPerYear?year="+year).timeout(Integer.MAX_VALUE).get(); //connessione al sito "Publications in the APICe Space (year)"
+				//connecting to the page named "Publications in the APICe Space (year)"
+				Document pubsPerYear = Jsoup.connect(SysKb.APICE_HOME+"PapersPerYear?year="+year).timeout(Integer.MAX_VALUE).get(); 
 				
-				Elements pubs = pubsPerYear.select("div [class=title]"); //seleziono i titoli delle pubblicazioni
+				Elements pubs = pubsPerYear.select("div [class=title]"); // select all the publication titles
 				
-				Future<List<Publication>> subRes = exec.submit(new SubCrawler(pubs, keyword)); //sottopongo all'executor un task callable che gestisce un certo year
-				futures.add(subRes); //aggiungo le future alla lista per successivo get
+				Future<List<Publication>> subRes = exec.submit(new SubCrawler(pubs, keyword)); // submit the executor to a callable task to handle a specific year
+				futures.add(subRes); // add futures to future list to get them next
 				
-				year++; //vado all'anno successivo
+				year++; // next year
 			}
 		} catch(IOException e){
-			if(e instanceof SocketTimeoutException){ //gestione dell'eccezione relativa alla indisponibilità del server ApiCE
+			if(e instanceof SocketTimeoutException){ // handle an eventual server ApiCE unavailability
 				System.out.println("SocketTimeoutException: Apice Server does not respond");
 			}else{
 				e.printStackTrace();
 			}
 		}
 		
+		// waiting for each future completions
 		for(Future<List<Publication>> future : futures){
 			try {
-				List<Publication> subRes = future.get(); //recupero il risultato della future 
+				// get future results
+				List<Publication> subRes = future.get();
 				
+				// add the future results to the main publication structure
 				for(Publication pub : subRes){
-					results.add(pub); //metto i risultati nella lista di Publication
+					results.add(pub);
 				}
 				
 			} catch (InterruptedException | ExecutionException e) {
@@ -67,17 +94,18 @@ public class PubsCrawler {
 		exec.shutdown();
 		
 		Publication[] ret = new Publication[results.size()];
-		return results.toArray(ret); //trasformo results da lista a array di pubblicazioni
+		return results.toArray(ret);
 	}
 	
 	
-	
-	private static class SubCrawler implements Callable<List<Publication>>{ //per ogni anno c'è un task che si occupa di trovare la keyword nell'html della pubblicazione
+	// for each year there is a task that looks for all keyword occurrences in the publication "pre"
+	private static class SubCrawler implements Callable<List<Publication>>{
 		
 		private Elements pubs;
 		private String keyword;
 		
-		public SubCrawler(Elements pubs, String keyword){ //prende in ingresso tutti i titoli e la keyword da cercare
+		// look for keyword in pubs
+		public SubCrawler(Elements pubs, String keyword){
 			this.pubs = pubs;
 			this.keyword = keyword;
 		}
@@ -86,35 +114,37 @@ public class PubsCrawler {
 		public List<Publication> call() {
 			List<Publication> subRes = new ArrayList<Publication>(); 
 			
-			for(Element pub : pubs){ //itero tutti i titoli (che sono di tipo Element)
+			for(Element pub : pubs){ // iterating all the publications
 				if(!pub.absUrl("href").equals("")){
 					try {
-						Document pubDoc = Jsoup.connect(pub.absUrl("href")).timeout(Integer.MAX_VALUE).get(); //connessione al sito di cui prendo l'url da href della pub
-						String pre = pubDoc.select("pre").text().replace("\\", "/"); //seleziono la parte di html con tag pre e sostituisco eventuali \ con / per evitare problemi di parsing
-						//in pre ho il blocco @...{..., ..., ...} 
+						// connecting to the publication page
+						Document pubDoc = Jsoup.connect(pub.absUrl("href")).timeout(Integer.MAX_VALUE).get();
+						// select the "pre" part from the HTML source and replace all the \ with / to avoid parsing issues
+						String pre = pubDoc.select("pre").text().replace("\\", "/"); 
+						// "pre" format  --->   @...{..., ..., ...} 
 					
-						//creo array di stringhe con parole(rimuovo punteggiatura) corrispondenti a autori, keyword e titoli
+						// arrays of words (removing the punctuation) corresponding to authors, keywords and titles
 						String[] titleWords = PreParser.getTagInfo(pre, "title").split("\\W+");
 						String[] keyWords = PreParser.getTagInfo(pre, "keyword").split("\\W+");
 						String[] authWords = PreParser.getTagInfo(pre, "author").split("\\W+");
 						
-						//concatenazione degli array di parole
+						// concatenating the previous 3 arrays into one
 						Stream<String> stream = Stream.concat(Stream.of(titleWords), Stream.of(authWords));
 						if(keyWords.length!=0){
 							stream = Stream.concat(stream, Stream.of(keyWords));
 						}
 						String[] allWords = stream.toArray(String[]::new);
 					
-						//itero sull'array di parole e confronto ognuna di esse con la keyword data in ingresso al task
+						// looking for keyword occurrences
 						for(String s : allWords){
 							if(s.toLowerCase().equals(keyword.toLowerCase())){
-								//se vi è una corrispondenza, aggiungo alla lista di future un oggetto pubblicazione che contiene titolo e url dell'articolo
+								// as soon as get a match, build the publication object and add it to the results
 								subRes.add(new Publication(PreParser.getTagInfo(pre, "title"), pub.absUrl("href")));
 								break;
 							}
 						}
 					} catch(IOException e){
-						if(e instanceof SocketTimeoutException){ //gestione dell'eccezione relativa alla indisponibilità del server ApiCE
+						if(e instanceof SocketTimeoutException){ // handle an eventual server ApiCE unavailability
 							System.out.println("SocketTimeoutException: Apice Server does not respond");
 						}else{
 							e.printStackTrace();

@@ -1,5 +1,20 @@
 package sd1516.webcrawler.gui;
 
+/**
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
+ */
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import sd1516.webcrawler.utils.Publication;
@@ -16,6 +31,9 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 
+/*
+ * Graphic Publication Item with dynamic Url
+ */
 public class PubItemPanel extends JPanel implements MouseListener{
 
 	private static final long serialVersionUID = 2353532880026830322L;
@@ -61,6 +79,13 @@ public class PubItemPanel extends JPanel implements MouseListener{
 	}
 
 	@Override
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 * 
+	 * Click Url Event: open the default browser and redirect the user to
+	 * the specific web page.
+	 */
 	public void mouseClicked(MouseEvent ev) {
 		if (Desktop.isDesktopSupported()) {
 		      try {

@@ -1,60 +1,84 @@
 package sd1516.webcrawler.utils;
 
 /**
- * Classe che contiene il metodo per recuperare keywords, autori, titoli, ecc... delle pubblicazioni
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
  */
 
+/*
+ * Utility that allows to obtain some publication informations
+ * parsing the "Pre" tag 
+ * (look at TestPreParser.java to see some "pre" examples)
+ */
 public class PreParser {
 
 	private PreParser(){}
 	
-	public static String getTagInfo(String pre, String tag){ //"pre" è il blocco @...{..., ..., ...} 
+	/*
+	 * "pre" is the block @...{..., ..., ...} containing the Publication informations.
+	 * The "tag" parameter specifies the kind of information to explore (like author, title,
+	 * keywords, year, ecc...)
+	 */
+	public static String getTagInfo(String pre, String tag){
 		String words = "";
 		
-		String preToLowerCase = pre.toLowerCase(); //mette minuscola tutta la stringa perchè indexOf() è case sensitive
-		int tagIndex = preToLowerCase.indexOf((char)9+tag); //prendo indice dove inizia il tag
-		if(tagIndex<0){
-			tagIndex = preToLowerCase.indexOf((char)32+tag);
-			if(tagIndex<0){
-				tagIndex = preToLowerCase.indexOf(tag);
+		// indexOf() method is case sensitive
+		String preToLowerCase = pre.toLowerCase();
+		
+		//get the beginning index of tag
+		int tagIndex = preToLowerCase.indexOf((char)9+tag); // search for eventual horizontal tab before tag
+		if(tagIndex<0){ // not found
+			tagIndex = preToLowerCase.indexOf((char)32+tag); // search for eventual whitespace before tag
+			if(tagIndex<0){ // not found
+				tagIndex = preToLowerCase.indexOf(tag); // search only for tag
 			}
 		}
 		
-		if(tagIndex>1){ //se c'è un tag e quindi un indice di inizio
-			words = pre.substring(tagIndex); //rimuovo la parte prima del tag
-			words = words.substring(words.indexOf("{")+1); //rimuovo la parte: Tag = {
-			int fromBrace = 0; //è la posizione dove inzia la prima parola della lista tra le graffe
-			int toBrace = words.indexOf("}"); // è la posizione della prima } che si incontra
+		if(tagIndex>1){ // tag found
+			words = pre.substring(tagIndex); // remove all the "pre" part before the tag index
+			words = words.substring(words.indexOf("{")+1); // remove the part: Tag = {
+			int fromBrace = 0; // position of the first word into the braces
+			int toBrace = words.indexOf("}"); // position of the closing brace
 			
-			/**
-			 * rimuovo eventuali { } che si potrebbero trovare all'interno delle graffe di Tag = {...} 
+			/*
+			 * remove possible nested opening/closing braces inside the Tag = {...} 
 			 */
-			while(words.indexOf("{") < words.indexOf("}") && words.indexOf("{") >= 0){ //se trovo una { all'interno di Tag = {...} 
-				int openCB = words.indexOf("{"); //posizione della { intrusa
-				int closedCB = words.indexOf("}"); //posizione della prima } intrusa
+			while(words.indexOf("{") < words.indexOf("}") && words.indexOf("{") >= 0){ // in case of opening brace inside Tag = {...} 
+				int openCB = words.indexOf("{"); // position of the opening brace intruder
+				int closedCB = words.indexOf("}"); // position of the first closing brace intruder
 				StringBuilder sb = new StringBuilder(words);
-				sb.deleteCharAt(openCB); //rimuovo la { intrusa
-				sb.deleteCharAt(closedCB-1); //rimuovo la } intrusa, il cui indice ci è spostato indietro di 1 per il delete della {
+				sb.deleteCharAt(openCB); // remove the opening brace intruder
+				sb.deleteCharAt(closedCB-1); // remove the closing brace intruder (shift index caused by the opening brace deletion)
 				words = sb.toString();
-				toBrace = words.indexOf("}"); //posizione della prossima } che è l'ultima
+				toBrace = words.indexOf("}"); // position of the tag closing brace
 				
-				/**
-				 * rimuovo eventuali caratteri inutili che si potrebbero trovare all'interno delle graffe di Keywords = {...} 
+				/*
+				 * remove possible useless char inside the tag Keywords = {...} 
 				 */
-				if((words.charAt(openCB) == '/') && (words.charAt(openCB+1) == 39)){ //se trovo / o '
+				if((words.charAt(openCB) == '/') && (words.charAt(openCB+1) == 39)){ // looking for slash or apostrophe chars
 					StringBuilder sb2 = new StringBuilder(words);
-					sb2.deleteCharAt(openCB); //li rimuovo
+					sb2.deleteCharAt(openCB); // delete it
 					sb2.deleteCharAt(openCB);
 					words = sb2.toString();
-					toBrace = words.indexOf("}"); //posizione della prossima } che è l'ultima
+					toBrace = words.indexOf("}"); // position of the tag closing brace
 				}
 			}
 			
-			words = words.substring(fromBrace, toBrace); //prendo le parole tra la prima posizione salvata precedentemente e la posizione dell'ultima } che chiude Tag = {...}  
+			words = words.substring(fromBrace, toBrace); // get all the words inside Tag = {...}  
 		}
 		
-		words = words.replace("/sf", ""); //elimino eventuali caratteri "/sf" che compaiono nelle pubblicazioni
+		words = words.replace("/sf", ""); // clean from possible "/sf" (Latex format traces to not consider)
 		
-		return words; //torna stringa contenente eventuali tag
+		return words;
 	}
 }

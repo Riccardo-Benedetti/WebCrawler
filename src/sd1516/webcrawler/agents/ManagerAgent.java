@@ -1,5 +1,20 @@
 package sd1516.webcrawler.agents;
 
+/**
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
+ */
+
 import java.util.HashMap;
 import alice.logictuple.LogicTuple;
 import alice.logictuple.exceptions.InvalidLogicTupleException;
@@ -22,7 +37,7 @@ import jade.gui.GuiEvent;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import jade.wrapper.StaleProxyException;
-import sd1516.webcrawler.gui.WebCrawlerAgentManagerView;
+import sd1516.webcrawler.gui.WebCrawlerManagerView;
 import sd1516.webcrawler.interfaces.IWebCrawlerGui;
 import sd1516.webcrawler.sysconstants.SysKb;
 import sd1516.webcrawler.utils.ValidTermFactory;
@@ -58,7 +73,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 	private AddWorkerHandler addWorkerBehaviour;
 	private RemoveWorkerHandler removeWorkerBehaviour;
 	
-	private WebCrawlerAgentManagerView view;
+	private WebCrawlerManagerView view;
 	
 	private boolean complete;
 	
@@ -109,7 +124,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
             this.doDelete();
         }
 		
-		this.view = new WebCrawlerAgentManagerView(this);
+		this.view = new WebCrawlerManagerView(this);
 		this.view.showGui();
 	}
 
@@ -136,7 +151,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 				e.printStackTrace();
 			}
 			
-			ManagerAgent.this.view.updateView(success, agentToAdd, WebCrawlerAgentManagerView.ADDMASTER);
+			ManagerAgent.this.view.updateView(success, agentToAdd, WebCrawlerManagerView.ADDMASTER);
 		}
 	}
 
@@ -180,7 +195,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 			if(rm != null){
 				String keyword = ValidTermFactory.getStringByTerm(rm.getTuple().getArg(1).getArg(0).toTerm());
 				if(!keyword.equals("K")){ // no template -> tuple found -> removal failed
-					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEMASTER);
+					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerManagerView.REMOVEMASTER);
 				}else{ // result = template -> tuple not found -> removal operation allowed
 					try {
 						ManagerAgent.this.masters.get(agentToRemove).kill();
@@ -189,7 +204,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 						ManagerAgent.this.doDelete();
 					}
 					ManagerAgent.this.masters.remove(agentToRemove);
-					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEMASTER);
+					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerManagerView.REMOVEMASTER);
 				}
 				ManagerAgent.this.bridge.clearTucsonOpResult(this);
 				ManagerAgent.this.complete = true;
@@ -229,7 +244,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 				e.printStackTrace();
 			}
 			
-			ManagerAgent.this.view.updateView(success, agentToAdd, WebCrawlerAgentManagerView.ADDWORKER);
+			ManagerAgent.this.view.updateView(success, agentToAdd, WebCrawlerManagerView.ADDWORKER);
 		}
 	}
 
@@ -274,7 +289,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 			if(rw != null){
 				String keyword = ValidTermFactory.getStringByTerm(rw.getTuple().getArg(1).getArg(0).toTerm());
 				if(!keyword.equals("K")){ // no template -> tuple found -> removal failed
-					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEWORKER);
+					ManagerAgent.this.view.updateView(false, this.agentToRemove, WebCrawlerManagerView.REMOVEWORKER);
 				}else{ // result = template -> tuple not found -> removal operation allowed
 					try {
 						ManagerAgent.this.workers.get(agentToRemove).kill();
@@ -283,7 +298,7 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 						ManagerAgent.this.doDelete();
 					}
 					ManagerAgent.this.workers.remove(agentToRemove);
-					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerAgentManagerView.REMOVEWORKER);
+					ManagerAgent.this.view.updateView(true, this.agentToRemove, WebCrawlerManagerView.REMOVEWORKER);
 				}
 				ManagerAgent.this.bridge.clearTucsonOpResult(this);
 				ManagerAgent.this.complete = true;
@@ -316,19 +331,19 @@ public class ManagerAgent extends GuiAgent implements IWebCrawlerGui {
 	protected void onGuiEvent(GuiEvent ev) {
 		this.view.disableInput();
 		
-		if(ev.getType() == WebCrawlerAgentManagerView.ADDMASTER){
+		if(ev.getType() == WebCrawlerManagerView.ADDMASTER){
 			this.addMasterBehaviour = new AddMasterHandler();
 			this.addBehaviour(this.addMasterBehaviour);
-		}else if(ev.getType() == WebCrawlerAgentManagerView.REMOVEMASTER){
+		}else if(ev.getType() == WebCrawlerManagerView.REMOVEMASTER){
 			this.removeMasterBehaviour = new RemoveMasterHandler(ev.getParameter(0).toString());
 			this.addBehaviour(this.removeMasterBehaviour);
-		}else if(ev.getType() == WebCrawlerAgentManagerView.ADDWORKER){
+		}else if(ev.getType() == WebCrawlerManagerView.ADDWORKER){
 			this.addWorkerBehaviour = new AddWorkerHandler();
 			this.addBehaviour(this.addWorkerBehaviour);
-		}else if(ev.getType() == WebCrawlerAgentManagerView.REMOVEWORKER){
+		}else if(ev.getType() == WebCrawlerManagerView.REMOVEWORKER){
 			this.removeWorkerBehaviour = new RemoveWorkerHandler(ev.getParameter(0).toString());
 			this.addBehaviour(this.removeWorkerBehaviour);
-		}else if(ev.getType() == WebCrawlerAgentManagerView.KILL){
+		}else if(ev.getType() == WebCrawlerManagerView.KILL){
 			this.doDelete();
 		}else{
 			this.log("Unknown GUI event, terminating...");

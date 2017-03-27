@@ -1,12 +1,35 @@
 package sd1516.webcrawler.tests;
 
+/**
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
+ */
+
 import sd1516.webcrawler.utils.PreParser;
 
+/*
+ * PreParser Test
+ */
 public class TestPreParser {
 
 	public static void main(String[] args) {
-		int a = 4; //2 //3 //uso lo switch case così si deve cambaire solo il numerino della variabile a
+		/*
+		 * Set the "pre" to test
+		 */
+		int a = 1; // or 2; 3; 4;
+		
 		String pre ="";
+		
 		switch (a) {
 		case 1:
 			pre = "@article{compfields-scp117, Author = {Damiani, Ferruccio and Viroli, Mirko and Beal, "

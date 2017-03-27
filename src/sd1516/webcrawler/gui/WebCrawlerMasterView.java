@@ -1,5 +1,20 @@
 package sd1516.webcrawler.gui;
 
+/**
+ * DISTRIBUTED, FAULT-TOLERANT WEB CRAWLING WITH RASPI
+ * 
+ * @page https://apice.unibo.it/xwiki/bin/view/Courses/Sd1516Projects-CrawlingRaspiRamilliBenedetti
+ * 
+ * @author Riccardo Benedetti & Elisabetta Ramilli
+ * @email riccardo.benedetti3@studio.unibo.it
+ * @email elisabetta.ramilli@studio.unibo.it
+ * 
+ * Alma Mater Studiorum - Università di Bologna
+ * Laurea Magistrale in Ingegneria e Scienze Informatiche
+ * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
+ * 
+ */
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -17,6 +32,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 
+/*
+ * MasterAgent GUI
+ */
 public class WebCrawlerMasterView extends JFrame {
 
 	private static final long serialVersionUID = -2498507787790986541L;
@@ -29,12 +47,12 @@ public class WebCrawlerMasterView extends JFrame {
 	
 	private IWebCrawlerGui myAgentMaster;
 	
+	/*
+	 * GUI Events
+	 */
 	public static final int KILL = 0;
 	public static final int SEARCH = 1;
 
-	/**
-	 * Create the frame.
-	 */
 	public WebCrawlerMasterView(IWebCrawlerGui myAgentMaster) {
 		super(myAgentMaster.getAgentName());
 		this.myAgentMaster = myAgentMaster;
@@ -49,11 +67,13 @@ public class WebCrawlerMasterView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		final WebCrawlerMasterView me = this;
 		this.addWindowListener(new WindowAdapter(){
 			@Override
 			public void windowClosing(final WindowEvent ev){
 				final GuiEvent ge = new GuiEvent(me, WebCrawlerMasterView.KILL);
+				//raise an "Window Closing" event
 				WebCrawlerMasterView.this.myAgentMaster.postGuiEvent(ge);
 			}
 		});
@@ -63,7 +83,7 @@ public class WebCrawlerMasterView extends JFrame {
 		contentPane.add(txtSearch);
 		txtSearch.setColumns(10);
 		
-		lblSearch = new JLabel("Search for publications with the following keywords:");
+		lblSearch = new JLabel("Search for publications containing the following keywords:");
 		lblSearch.setBounds(30, 15, 600, 14);
 		contentPane.add(lblSearch);
 		
@@ -73,11 +93,14 @@ public class WebCrawlerMasterView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				final GuiEvent ge = new GuiEvent(btnSearch, WebCrawlerMasterView.SEARCH);
+				// pass the entered Keywords string
 				ge.addParameter(WebCrawlerMasterView.this.txtSearch.getText());
+				// clean the output panel
 				PubsContainerPanel pnlPubsCont = new PubsContainerPanel();
 				pnlPubsCont.remPubsItem();
 				spnlResults.setViewportView(pnlPubsCont);
-				WebCrawlerMasterView.this.myAgentMaster.postGuiEvent(ge); //accoda gli eventi della GUI
+				// raise a "New Search" event
+				WebCrawlerMasterView.this.myAgentMaster.postGuiEvent(ge); 
 			}
 		});
 		contentPane.add(btnSearch);
@@ -88,10 +111,17 @@ public class WebCrawlerMasterView extends JFrame {
 		contentPane.add(spnlResults);
 	}
 
+	/*
+	 * Listening for Button events 
+	 */
 	public void registerListener(ActionListener listener){
 		this.btnSearch.addActionListener(listener);
 	}
 	
+	/*
+	 * Show in output all the Publications found
+	 * (or warn if not found any)
+	 */
 	public void updateView(Publication[] results){
 		if(results.length==0){
 			JLabel lbl = new JLabel("No publications found");
@@ -111,8 +141,8 @@ public class WebCrawlerMasterView extends JFrame {
 		this.txtSearch.setEditable(true);
 	}
 
-	/**
-	 * Primo avvio della GUI
+	/*
+	 * GUI setup
 	 */
 	public void showGui() {
 		this.pack();
@@ -120,24 +150,24 @@ public class WebCrawlerMasterView extends JFrame {
 		super.setVisible(true);
 	}
 	
-	/**
-	 * Abilita gli input components per nuova ricerca
+	/*
+	 * Enable user components to accept new input events
 	 */
 	public void enableInput() {
 		btnSearch.setEnabled(true);
 		txtSearch.setEditable(true);
 	}
 	
-	/**
-	 * Disabilita gli input components durante l'elaborazione dei Workers
+	/*
+	 * Disable user components while waiting for workers completion
 	 */
 	public void disableInput(){
 		btnSearch.setEnabled(false);
 		txtSearch.setEditable(false);
 	}
 	
-	/**
-	 * alert di errore
+	/*
+	 * Raise an error message
 	 */
 	public void msgbox(String s){
 		JOptionPane.showMessageDialog(null, s, "SEARCH HAS FAILED", JOptionPane.ERROR_MESSAGE);

@@ -1,1018 +1,999 @@
-mar 15, 2017 10:44:02 AM jade.core.Runtime beginContainer
-INFORMAZIONI: ----------------------------------
-    This is JADE 4.3.3 - revision 6726 of 2014/12/09 09:33:02
-    downloaded in Open Source, under LGPL restrictions,
-    at http://jade.tilab.com/
-----------------------------------------
-mar 15, 2017 10:44:02 AM jade.imtp.leap.LEAPIMTPManager initialize
-INFORMAZIONI: Listening for intra-platform commands on address:
-- jicp://10.201.105.128:1099
+PubTitle: Contexts as First-Class Objects: An Implementation based on the SICStus Prolog System
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CtxlpGulp92
 
-mar 15, 2017 10:44:02 AM jade.core.BaseService init
-INFORMAZIONI: Service jade.core.management.AgentManagement initialized
-mar 15, 2017 10:44:02 AM jade.core.BaseService init
-INFORMAZIONI: Service jade.core.messaging.Messaging initialized
-mar 15, 2017 10:44:02 AM jade.core.BaseService init
-INFORMAZIONI: Service jade.core.resource.ResourceManagement initialized
-[TuCSoN Service]: --------------------------------------------------------------------------------
-[TuCSoN Service]:  _________  _    _       _____
-[TuCSoN Service]: |  _   _  || |  | |     |_   _|
-[TuCSoN Service]: |_/ | | \_|| |__| |_      | |
-[TuCSoN Service]:     | |    |____   _| _   | |
-[TuCSoN Service]:    _| |_       _| |_ | |__' |
-[TuCSoN Service]:   |_____|     |_____|`.____.'
-[TuCSoN Service]: --------------------------------------------------------------------------------
-[TuCSoN Service]: Welcome to the TuCSoN4JADE (T4J) bridge :)
-[TuCSoN Service]:   T4J version TuCSoN4JADE-1.1
-[TuCSoN Service]: Wed Mar 15 10:44:02 CET 2017
-[TuCSoN Service]: --------------------------------------------------------------------------------
-mar 15, 2017 10:44:02 AM jade.core.BaseService init
-INFORMAZIONI: Service it.unibo.tucson.jade.service.TucsonService initialized
-mar 15, 2017 10:44:02 AM jade.mtp.http.HTTPServer <init>
-INFORMAZIONI: HTTP-MTP Using XML parser com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser
-mar 15, 2017 10:44:02 AM jade.core.messaging.MessagingService boot
-INFORMAZIONI: MTP addresses:
-http://DESKTOP-0ISRON4:7778/acc
-mar 15, 2017 10:44:02 AM jade.core.AgentContainerImpl joinPlatform
-INFORMAZIONI: --------------------------------------
-Agent container Main-Container@10.201.105.128 is ready.
---------------------------------------------
-mar 15, 2017 10:44:02 AM jade.tools.ToolAgent init
-AVVERTENZA: NotificationService not installed. Some tool may not work properly.
-[watchdog@WebCrawlerPlatform]: Booting local TuCSoN Node on default port...
-[TuCSoN Service Helper]: Booting local TuCSoN Node Service on port 20504
-[TuCSoN Node Service]: --------------------------------------------------------------------------------
-[TuCSoN Node Service]:  _________            ______   ______          ____  _____
-[TuCSoN Node Service]: |  _   _  |         .' ___  |.' ____ \        |_   \|_   _|
-[TuCSoN Node Service]: |_/ | | \_|__   _  / .'   \_|| (___ \_|  .--.   |   \ | |
-[TuCSoN Node Service]:     | |   [  | | | | |        _.____`. / .'`\ \ | |\ \| |
-[TuCSoN Node Service]:    _| |_   | \_/ |,\ `.___.'\| \____) || \__. |_| |_\   |_
-[TuCSoN Node Service]:   |_____|  '.__.'_/ `.____ .' \______.' '.__.'|_____|\____|
-[TuCSoN Node Service]: --------------------------------------------------------------------------------
-[TuCSoN Node Service]: Welcome to the TuCSoN infrastructure :)
-[TuCSoN Node Service]:   Version TuCSoN-1.12.0.0301
-[TuCSoN Node Service]: --------------------------------------------------------------------------------
-[TuCSoN Node Service]: Wed Mar 15 10:44:03 CET 2017
-[TuCSoN Node Service]: Beginning TuCSoN Node Service installation...
-[TuCSoN Node Service]: Configuring TuCSoN Node Service...
-[TuCSoN Node Service]: Setting up Observation Service...
-....[RespectVMContext ('$OBS'@localhost:20504)]: No more solutions.
-....[RespectVMContext ('$OBS'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ]
-....[RespectVMContext ('$OBS'@localhost:20504)]: guard = true
-....[RespectVMContext ('$OBS'@localhost:20504)]: evaluation = true
-[TuCSoN Node Service]: Setting up Management Service...
-....[RespectVMContext ('$OBS'@localhost:20504)]: triggered reaction = reaction(out(boot),','(out(agent_list([])),','(out(tc_list([])),in(boot))))
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(agent_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(tc_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: reaction evaluation success = false
-....[RespectVMContext ('$OBS'@localhost:20504)]: COMPLETION phase: [ op: boot, ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$OBS'@localhost:20504)]: guard = true
-....[RespectVMContext ('$OBS'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$OBS'@localhost:20504)]: triggered reaction = reaction(out(boot),','(out(agent_list([])),','(out(tc_list([])),in(boot))))
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(agent_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: out(tc_list([])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$OBS'@localhost:20504)]: internal event processing: [ op: in(boot), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$OBS',':'(localhost,'20504')), tc: '@'('$OBS',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$OBS'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: No more solutions.
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(out(boot),','(in(boot),','(no(boot_info(_1693759341)),','(current_time(_1739402669),','(out(boot_info([time(_1739402669)])),','(out(is_rbac_installed(no)),','(out(context_id(0)),','(out(is_inspection_allowed(yes)),','(out(policy(admin_policy,[])),','(out(role_policy(admin_role,admin_policy)),out(policy(defaultPolicy,[]))))))))))))
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: boot, ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(out(boot),','(in(boot),','(no(boot_info(_548937183)),','(current_time(_2010106278),','(out(boot_info([time(_2010106278)])),','(out(is_rbac_installed(no)),','(out(context_id(0)),','(out(is_inspection_allowed(yes)),','(out(policy(admin_policy,[])),','(out(role_policy(admin_role,admin_policy)),out(policy(defaultPolicy,[]))))))))))))
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(boot), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(boot_info(_1728433118)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(boot_info([time(121)])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(is_rbac_installed(no)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(0)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(is_inspection_allowed(yes)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(policy(admin_policy,[])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(role_policy(admin_role,admin_policy)), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(policy(defaultPolicy,[])), ie: [ [ src: '$TucsonNodeService-Agent', op: out(boot), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: basic_agent_class(basicAgentClass), ie: [ [ src: '$TucsonNodeService-Agent', op: out(basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(is_login_required(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_login_required(no), ie: [ [ src: '$TucsonNodeService-Agent', op: out(is_login_required(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(list_all_roles(yes)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: list_all_roles(yes), ie: [ [ src: '$TucsonNodeService-Agent', op: out(list_all_roles(yes)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: '$TucsonNodeService-Agent', op: out(allow_inspection(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: allow_inspection(no), ie: [ [ src: '$TucsonNodeService-Agent', op: out(allow_inspection(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-[TuCSoN Node Service]: Setting up Environment Configuration Service...
-....[RespectVMContext ('$ENV'@localhost:20504)]: No more solutions.
-[TuCSoN Node Service]: Spawning management agents...
-[TuCSoN Node Service]: Spawning Node Management Agent...
-[TuCSoN Node Service]: --------------------------------------------------------------------------------
-[TuCSoN Node Service]: Spawning ACC Provider Agent...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: node_management_agent, op: in(cmd(X)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = response
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProvider]: Listening to incoming ACC requests...
-[TuCSoN Node Service]: Spawning Welcome Agent...
-[TuCSoN Node Service]: Spawning Environmental Agent...
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')),','(rd(open_session(_2049406268,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',_1173545662,_1876378666)),','(no(context_request(negotAgent,ok(_1093129901),'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')),out(context_request(negotAgent,ok(_2049406268),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')),','(no(basic_agent_class(basic)),','(in(context_id(_941697916)),','(is(_1993615224,'+'(_941697916,1)),','(out(context_id(_1993615224)),','(no(open_session(_1967959340,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',_44575446,_870550324)),','(out(open_session(_941697916,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',basic,na)),out(context_request(negotAgent,ok(_941697916),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_500968536)),','(is(_1183520462,'+'(_500968536,1)),','(out(context_id(_1183520462)),','(no(open_session(_118537676,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',_1299267993,_833817219)),','(out(open_session(_500968536,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',basic,na)),out(context_request(negotAgent,ok(_500968536),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(negotAgent,failed(is_login_required),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(0)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(1)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1071893391,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',_1164362580,_418129445)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(0,negotAgent,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(negotAgent,ok(0),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(negotAgent,ok(0),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4'), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,ok(0),basic,'c2321dab-6a8c-4c82-ae1d-875a7d7999a4')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[ACCProvider]: ACC request accepted, ACC id is < 0 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'1a084adb-7058-41b8-a709-6717eab431ad')),','(rd(open_session(_57659493,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',_1343236153,_1268269566)),','(no(context_request('$EnvAgent',ok(_1591204938),'1a084adb-7058-41b8-a709-6717eab431ad')),out(context_request('$EnvAgent',ok(_57659493),basic,'1a084adb-7058-41b8-a709-6717eab431ad')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'1a084adb-7058-41b8-a709-6717eab431ad')),','(no(basic_agent_class(basic)),','(in(context_id(_546174705)),','(is(_1989496231,'+'(_546174705,1)),','(out(context_id(_1989496231)),','(no(open_session(_2016017581,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',_1669869508,_754804538)),','(out(open_session(_546174705,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',basic,na)),out(context_request('$EnvAgent',ok(_546174705),basic,'1a084adb-7058-41b8-a709-6717eab431ad')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'1a084adb-7058-41b8-a709-6717eab431ad')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_785815078)),','(is(_1322250421,'+'(_785815078,1)),','(out(context_id(_1322250421)),','(no(open_session(_916199742,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',_98151294,_522480197)),','(out(open_session(_785815078,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',basic,na)),out(context_request('$EnvAgent',ok(_785815078),basic,'1a084adb-7058-41b8-a709-6717eab431ad'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request('$EnvAgent',CtxId_e0,basic,'1a084adb-7058-41b8-a709-6717eab431ad')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request('$EnvAgent',failed(is_login_required),basic,'1a084adb-7058-41b8-a709-6717eab431ad')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(1)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(2)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1841464426,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',_1165414704,_1890102418)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(1,'$EnvAgent','1a084adb-7058-41b8-a709-6717eab431ad',basic,na)), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request('$EnvAgent',ok(1),basic,'1a084adb-7058-41b8-a709-6717eab431ad')), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',CtxId,basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-..[ACCProvider]: ACC request accepted, ACC id is < 1 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request('$EnvAgent',ok(1),basic,'1a084adb-7058-41b8-a709-6717eab431ad'), ie: [ [ src: context_manager, op: inp(context_request('$EnvAgent',ok(1),basic,'1a084adb-7058-41b8-a709-6717eab431ad')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[OperationHandler (negotAgent)]: requesting op 4, get_basic_agent_class(Response), '@'('$ORG',':'(localhost,'20504'))
-....[OperationHandler ('$EnvAgent')]: requesting op 2, cmd(Type), '@'('$ENV',':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 0, negotAgent)]: Serving TucsonOperation request < id=12, type=4, tuple=get_basic_agent_class(Response) >...
-..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Serving TucsonOperation request < id=13, type=2, tuple=cmd(Type) >...
-..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-..[ACCProxyNodeSide (20504, 1, '$EnvAgent')]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ENV'@localhost:20504)]: INVOCATION phase: [ src: '$EnvAgent', op: in(cmd(Type)), trg: '@'('$ENV',':'(localhost,'20504')), tc: '@'('$ENV',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(get_basic_agent_class(Response_e0)),','(rd(basic_agent_class(_998760341)),out(get_basic_agent_class(_998760341))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: rd(basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(get_basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: get_basic_agent_class(basicAgentClass), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[OperationHandler (negotAgent)]: requesting op 3, is_rbac_installed(Result), '@'('$ORG',':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 0, negotAgent)]: Serving TucsonOperation request < id=15, type=3, tuple=is_rbac_installed(Result) >...
-..[ACCProxyNodeSide (20504, 0, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: rd(is_rbac_installed(Result)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_rbac_installed(no), ie: [ [ src: negotAgent, op: rd(is_rbac_installed(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-[TuCSoN Service Helper]: Giving ACC 'EnhancedACC' to agent watchdog
-[TuCSoN Service Helper]: Booting TuCSoN bridge for agent watchdog@WebCrawlerPlatform
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')),','(rd(open_session(_2095597668,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',_744812349,_1314502855)),','(no(context_request(watchdog,ok(_804899853),'c1c3000f-e260-43ef-af5d-2bbfc90d2929')),out(context_request(watchdog,ok(_2095597668),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')),','(no(basic_agent_class(basic)),','(in(context_id(_1373716432)),','(is(_1916817201,'+'(_1373716432,1)),','(out(context_id(_1916817201)),','(no(open_session(_2017622884,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',_1928702142,_716314255)),','(out(open_session(_1373716432,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',basic,na)),out(context_request(watchdog,ok(_1373716432),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_852934679)),','(is(_2141373819,'+'(_852934679,1)),','(out(context_id(_2141373819)),','(no(open_session(_1051042872,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',_93424942,_21177331)),','(out(open_session(_852934679,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',basic,na)),out(context_request(watchdog,ok(_852934679),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(watchdog,CtxId_e0,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(watchdog,failed(is_login_required),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(2)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(3)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1532921232,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',_2064236363,_371994967)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(2,watchdog,'c1c3000f-e260-43ef-af5d-2bbfc90d2929',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(watchdog,ok(2),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), ie: [ [ src: context_manager, op: inp(context_request(watchdog,CtxId,basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-..[ACCProvider]: ACC request accepted, ACC id is < 2 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(watchdog,ok(2),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929'), ie: [ [ src: context_manager, op: inp(context_request(watchdog,ok(2),basic,'c1c3000f-e260-43ef-af5d-2bbfc90d2929')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=18, type=11, tuple=hello(from(A),node(N)) >...
-[TuCSoN Node Service]: Booting new tuple centre < default >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=20, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=22, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-[TuCSoN Service]: --------------------------------------------------------------------------------
-[TuCSoN Service]:  _________  _    _       _____
-[TuCSoN Service]: |  _   _  || |  | |     |_   _|
-[TuCSoN Service]: |_/ | | \_|| |__| |_      | |
-[TuCSoN Service]:     | |    |____   _| _   | |
-[TuCSoN Service]:    _| |_       _| |_ | |__' |
-[TuCSoN Service]:   |_____|     |_____|`.____.'
-[TuCSoN Service]: --------------------------------------------------------------------------------
-[TuCSoN Service]: Welcome to the TuCSoN4JADE (T4J) bridge :)
-[TuCSoN Service]:   T4J version TuCSoN4JADE-1.1
-[TuCSoN Service]: Wed Mar 15 10:44:07 CET 2017
-[TuCSoN Service]: --------------------------------------------------------------------------------
-mar 15, 2017 10:44:07 AM jade.core.PlatformManagerImpl localAddNode
-INFORMAZIONI: Adding node <RaspiContainer2> to the platform
-mar 15, 2017 10:44:07 AM jade.core.PlatformManagerImpl$1 nodeAdded
-INFORMAZIONI: --- Node <RaspiContainer2> ALIVE ---
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')),','(rd(open_session(_352443014,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',_776498229,_1921276378)),','(no(context_request(negotAgent,ok(_1943204502),'128f7c8f-568c-4ee8-b486-9a6a6379eef7')),out(context_request(negotAgent,ok(_352443014),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')),','(no(basic_agent_class(basic)),','(in(context_id(_1263573315)),','(is(_13410749,'+'(_1263573315,1)),','(out(context_id(_13410749)),','(no(open_session(_1342940598,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',_1736323383,_673916442)),','(out(open_session(_1263573315,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',basic,na)),out(context_request(negotAgent,ok(_1263573315),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_1542913350)),','(is(_706089475,'+'(_1542913350,1)),','(out(context_id(_706089475)),','(no(open_session(_1060898961,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',_1979450643,_428657191)),','(out(open_session(_1542913350,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',basic,na)),out(context_request(negotAgent,ok(_1542913350),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(negotAgent,failed(is_login_required),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(3)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(4)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_108629963,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',_473922255,_852873952)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(3,negotAgent,'128f7c8f-568c-4ee8-b486-9a6a6379eef7',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(negotAgent,ok(3),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-..[ACCProvider]: ACC request accepted, ACC id is < 3 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(negotAgent,ok(3),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7'), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,ok(3),basic,'128f7c8f-568c-4ee8-b486-9a6a6379eef7')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[ACCProxyNodeSide (20504, 3, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 3, negotAgent)]: Serving TucsonOperation request < id=0, type=4, tuple=get_basic_agent_class(Response) >...
-..[ACCProxyNodeSide (20504, 3, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(get_basic_agent_class(Response_e0)),','(rd(basic_agent_class(_593268481)),out(get_basic_agent_class(_593268481))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: rd(basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(get_basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: get_basic_agent_class(basicAgentClass), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 3, negotAgent)]: Serving TucsonOperation request < id=1, type=3, tuple=is_rbac_installed(Result) >...
-..[ACCProxyNodeSide (20504, 3, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: rd(is_rbac_installed(Result)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_rbac_installed(no), ie: [ [ src: negotAgent, op: rd(is_rbac_installed(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(ping2,CtxId_e0,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')),','(rd(open_session(_476500967,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',_1806511892,_668816424)),','(no(context_request(ping2,ok(_235974263),'fdbc28e6-edba-4b7b-8876-fb7becebe527')),out(context_request(ping2,ok(_476500967),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(ping2,CtxId_e0,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')),','(no(basic_agent_class(basic)),','(in(context_id(_1209117675)),','(is(_86092650,'+'(_1209117675,1)),','(out(context_id(_86092650)),','(no(open_session(_1546016583,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',_4401397,_1162380773)),','(out(open_session(_1209117675,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',basic,na)),out(context_request(ping2,ok(_1209117675),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(ping2,CtxId_e0,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_2013453122)),','(is(_947474784,'+'(_2013453122,1)),','(out(context_id(_947474784)),','(no(open_session(_775394922,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',_1527496985,_901634545)),','(out(open_session(_2013453122,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',basic,na)),out(context_request(ping2,ok(_2013453122),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(ping2,CtxId_e0,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(ping2,failed(is_login_required),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(4)), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(5)), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_857885263,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',_1038983495,_900398268)), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(4,ping2,'fdbc28e6-edba-4b7b-8876-fb7becebe527',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(ping2,ok(4),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), ie: [ [ src: context_manager, op: inp(context_request(ping2,CtxId,basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-..[ACCProvider]: ACC request accepted, ACC id is < 4 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(ping2,ok(4),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527'), ie: [ [ src: context_manager, op: inp(context_request(ping2,ok(4),basic,'fdbc28e6-edba-4b7b-8876-fb7becebe527')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=2, type=1, tuple=hello(from('ping2@WebCrawlerPlatform'),node(localhost)) >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(hello(from('ping2@WebCrawlerPlatform'),node(localhost))), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: hello(from('ping2@WebCrawlerPlatform'),node(localhost)), ie: [ [ src: ping2, op: out(hello(from('ping2@WebCrawlerPlatform'),node(localhost))), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=3, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')),','(rd(open_session(_37308294,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',_1648668503,_791282594)),','(no(context_request(negotAgent,ok(_613180777),'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')),out(context_request(negotAgent,ok(_37308294),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')),','(no(basic_agent_class(basic)),','(in(context_id(_1331217155)),','(is(_1538994405,'+'(_1331217155,1)),','(out(context_id(_1538994405)),','(no(open_session(_1902248592,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',_367496792,_472782652)),','(out(open_session(_1331217155,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',basic,na)),out(context_request(negotAgent,ok(_1331217155),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_564216727)),','(is(_1584768472,'+'(_564216727,1)),','(out(context_id(_1584768472)),','(no(open_session(_622726647,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',_1756637795,_1134719257)),','(out(open_session(_564216727,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',basic,na)),out(context_request(negotAgent,ok(_564216727),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(negotAgent,failed(is_login_required),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(5)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(6)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_2038949585,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',_709663119,_412920698)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(5,negotAgent,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(negotAgent,ok(5),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(negotAgent,ok(5),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3'), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,ok(5),basic,'3bf6bbb6-09a5-4ce1-8c82-bb562c83d1c3')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[ACCProvider]: ACC request accepted, ACC id is < 5 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 5, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 5, negotAgent)]: Serving TucsonOperation request < id=4, type=4, tuple=get_basic_agent_class(Response) >...
-..[ACCProxyNodeSide (20504, 5, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(get_basic_agent_class(Response_e0)),','(rd(basic_agent_class(_251409866)),out(get_basic_agent_class(_251409866))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: rd(basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(get_basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: get_basic_agent_class(basicAgentClass), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 5, negotAgent)]: Serving TucsonOperation request < id=5, type=3, tuple=is_rbac_installed(Result) >...
-..[ACCProxyNodeSide (20504, 5, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: rd(is_rbac_installed(Result)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_rbac_installed(no), ie: [ [ src: negotAgent, op: rd(is_rbac_installed(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')),','(rd(open_session(_1228795193,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',_322086416,_1215841485)),','(no(context_request(negotAgent,ok(_542337406),'42980d57-c062-4998-a24a-b5b8e43bf8ab')),out(context_request(negotAgent,ok(_1228795193),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')),','(no(basic_agent_class(basic)),','(in(context_id(_687835741)),','(is(_1036802730,'+'(_687835741,1)),','(out(context_id(_1036802730)),','(no(open_session(_138828588,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',_1088564633,_345766586)),','(out(open_session(_687835741,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',basic,na)),out(context_request(negotAgent,ok(_687835741),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_1742768355)),','(is(_267095097,'+'(_1742768355,1)),','(out(context_id(_267095097)),','(no(open_session(_286596527,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',_1006716507,_1598383784)),','(out(open_session(_1742768355,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',basic,na)),out(context_request(negotAgent,ok(_1742768355),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(negotAgent,CtxId_e0,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(negotAgent,failed(is_login_required),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(6)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(7)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1414542714,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',_1389339840,_2061468595)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(6,negotAgent,'42980d57-c062-4998-a24a-b5b8e43bf8ab',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(negotAgent,ok(6),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,CtxId,basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(negotAgent,ok(6),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab'), ie: [ [ src: context_manager, op: inp(context_request(negotAgent,ok(6),basic,'42980d57-c062-4998-a24a-b5b8e43bf8ab')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[ACCProvider]: ACC request accepted, ACC id is < 6 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[ACCProxyNodeSide (20504, 6, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 6, negotAgent)]: Serving TucsonOperation request < id=6, type=4, tuple=get_basic_agent_class(Response) >...
-..[ACCProxyNodeSide (20504, 6, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(get_basic_agent_class(Response_e0)),','(rd(basic_agent_class(_568725899)),out(get_basic_agent_class(_568725899))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: rd(basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(get_basic_agent_class(basicAgentClass)), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(Response)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: get_basic_agent_class(basicAgentClass), ie: [ [ src: negotAgent, op: inp(get_basic_agent_class(basicAgentClass)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = invocation
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 6, negotAgent)]: Serving TucsonOperation request < id=7, type=3, tuple=is_rbac_installed(Result) >...
-..[ACCProxyNodeSide (20504, 6, negotAgent)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: negotAgent, op: rd(is_rbac_installed(Result)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: is_rbac_installed(no), ie: [ [ src: negotAgent, op: rd(is_rbac_installed(no)), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-..[WelcomeAgent]: Delegating ACCProvider received enter request...
-..[ACCProvider]: Processing ACC request...
-....[RespectVMContext ('$ORG'@localhost:20504)]: INVOCATION phase: [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(worker0raspi2,CtxId_e0,basic,'11597e13-4bba-467f-997e-2fe837660566')),','(rd(open_session(_1262553756,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',_1859737395,_1665105622)),','(no(context_request(worker0raspi2,ok(_95807903),'11597e13-4bba-467f-997e-2fe837660566')),out(context_request(worker0raspi2,ok(_1262553756),basic,'11597e13-4bba-467f-997e-2fe837660566')))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(worker0raspi2,CtxId_e0,basic,'11597e13-4bba-467f-997e-2fe837660566')),','(no(basic_agent_class(basic)),','(in(context_id(_785330639)),','(is(_392249062,'+'(_785330639,1)),','(out(context_id(_392249062)),','(no(open_session(_773896724,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',_1224266986,_527357299)),','(out(open_session(_785330639,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',basic,na)),out(context_request(worker0raspi2,ok(_785330639),basic,'11597e13-4bba-467f-997e-2fe837660566')))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(worker0raspi2,CtxId_e0,basic,'11597e13-4bba-467f-997e-2fe837660566')),','(rd(basic_agent_class(basic)),','(no(is_login_required(yes)),','(in(context_id(_1735423491)),','(is(_1047885988,'+'(_1735423491,1)),','(out(context_id(_1047885988)),','(no(open_session(_418490982,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',_1077313920,_613558251)),','(out(open_session(_1735423491,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',basic,na)),out(context_request(worker0raspi2,ok(_1735423491),basic,'11597e13-4bba-467f-997e-2fe837660566'))))))))))
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = true
-....[RespectVMContext ('$ORG'@localhost:20504)]: triggered reaction = reaction(inp(context_request(worker0raspi2,CtxId_e0,basic,'11597e13-4bba-467f-997e-2fe837660566')),','(rd(basic_agent_class(basic)),','(rd(is_login_required(yes)),out(context_request(worker0raspi2,failed(is_login_required),basic,'11597e13-4bba-467f-997e-2fe837660566')))))
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(basic_agent_class(basic)), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local in triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: in(context_id(7)), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_id(8)), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local no triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: no(open_session(_1534936227,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',_642672600,_1708946235)), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(open_session(7,worker0raspi2,'11597e13-4bba-467f-997e-2fe837660566',basic,na)), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-......[Respect2PLibrary]: Local out triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: internal event processing: [ op: out(context_request(worker0raspi2,ok(7),basic,'11597e13-4bba-467f-997e-2fe837660566')), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,CtxId,basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = true
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-......[Respect2PLibrary]: Local rd triggered...
-....[RespectVMContext ('$ORG'@localhost:20504)]: reaction evaluation success = false
-..[ACCProvider]: ACC request accepted, ACC id is < 7 >
-....[RespectVMContext ('$ORG'@localhost:20504)]: COMPLETION phase: [ op: context_request(worker0raspi2,ok(7),basic,'11597e13-4bba-467f-997e-2fe837660566'), ie: [ [ src: context_manager, op: inp(context_request(worker0raspi2,ok(7),basic,'11597e13-4bba-467f-997e-2fe837660566')), trg: '@'('$ORG',':'(localhost,'20504')), tc: '@'('$ORG',':'(localhost,'20504')) ] ] ]
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[WelcomeAgent]: Listening to incoming connections...
-..[WelcomeAgent]: --------------------------------------------------------------------------------
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-....[RespectVMContext ('$ORG'@localhost:20504)]: guard = request
-..[ACCProxyNodeSide (20504, 7, worker0raspi2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext ('$ORG'@localhost:20504)]: evaluation = false
-..[ACCProxyNodeSide (20504, 7, worker0raspi2)]: Serving TucsonOperation request < id=8, type=1, tuple=hello(from('worker0raspi2@WebCrawlerPlatform'),node(localhost)) >...
-..[ACCProxyNodeSide (20504, 7, worker0raspi2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: worker0raspi2, op: out(hello(from('worker0raspi2@WebCrawlerPlatform'),node(localhost))), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: hello(from('worker0raspi2@WebCrawlerPlatform'),node(localhost)), ie: [ [ src: worker0raspi2, op: out(hello(from('worker0raspi2@WebCrawlerPlatform'),node(localhost))), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 7, worker0raspi2)]: Serving TucsonOperation request < id=9, type=2, tuple=keyword(value(V),from(M)) >...
-..[ACCProxyNodeSide (20504, 7, worker0raspi2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: worker0raspi2, op: in(keyword(value(V),from(M))), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=39, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=41, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[hello(from('ping2@WebCrawlerPlatform'),node(localhost)),hello(from('worker0raspi2@WebCrawlerPlatform'),node(localhost))]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=43, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=10, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=11, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=47, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=49, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=51, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=12, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=13, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=55, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=57, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=14, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=15, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=61, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=63, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=65, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=16, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=17, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=69, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=71, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=18, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=19, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=75, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=77, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=79, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=20, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=21, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=83, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=85, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=22, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=23, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=89, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=91, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=93, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=24, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=25, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=97, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=99, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=26, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=27, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=103, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=105, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=107, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=28, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=29, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=111, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=113, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=30, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=31, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=117, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=119, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=121, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=32, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=33, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=125, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=127, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=34, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=35, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=131, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=133, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=135, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=36, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=37, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=139, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=141, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=38, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=39, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(pong(A)) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, pong(A), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=145, type=11, tuple=pong(A) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(A,[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(A,[pong('ping2@WebCrawlerPlatform')]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Synchronous invocation of operation in_all(hello(from(A),node(N))) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 11, hello(from(A),node(N)), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=147, type=11, tuple=hello(from(A),node(N)) >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: null, ie: [ [ src: watchdog, op: in_all(from(A),[]), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[t4j Bridge]: Asynchronous (polling mode) invocation of operation out(ping('ping2@WebCrawlerPlatform')) to '@'(default,':'(localhost,'20504'))
-....[OperationHandler (watchdog)]: requesting op 1, ping('ping2@WebCrawlerPlatform'), '@'(default,':'(localhost,'20504'))
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Serving TucsonOperation request < id=149, type=1, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 2, watchdog)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: watchdog, op: out(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: ping('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=40, type=1, tuple=pong('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
-....[RespectVMContext (default@localhost:20504)]: COMPLETION phase: [ op: pong('ping2@WebCrawlerPlatform'), ie: [ [ src: ping2, op: out(pong('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ] ] ]
-..[ACCProxyNodeSide (20504, 4, ping2)]: Serving TucsonOperation request < id=41, type=2, tuple=ping('ping2@WebCrawlerPlatform') >...
-..[ACCProxyNodeSide (20504, 4, ping2)]: Listening to incoming TuCSoN agents/nodes requests...
-....[RespectVMContext (default@localhost:20504)]: INVOCATION phase: [ src: ping2, op: in(ping('ping2@WebCrawlerPlatform')), trg: '@'(default,':'(localhost,'20504')), tc: '@'(default,':'(localhost,'20504')) ]
+PubTitle: CSM User's Guide
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/DNOCsmUserGuide92
+
+PubTitle: Objects as Evolving Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpCompulog92
+
+PubTitle: Implementing Contexts in Logic Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CtxElp92
+
+PubTitle: Techniques for Implementing Contexts in Logic Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CtxElpIII
+
+PubTitle: From Modules to Structured Theories and Logic Objects: A Common ``Program-based'' Run-time Support
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpIclp93
+
+PubTitle: Exploiting Logic Programming in Robot Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LprobotGulp93
+
+PubTitle: Objects with State in CSM
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpCompulog93
+
+PubTitle: Verso un Ambiente di Sviluppo per Sistemi in Tempo Reale
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/DNORealTimeSurvey93
+
+PubTitle: Objects with State in Contextual Logic Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpPlilp93
+
+PubTitle: Object-Oriented Computations in Logic Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpEcoop94
+
+PubTitle: A Structured Logic Programming Approach to Robot Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LprobotPap94
+
+PubTitle: Open Logic Theory Composition in a Software Engineering Perspective
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LpseIclp94
+
+PubTitle: A Multi-Agent Framework and Programming Environment for Autonomous Robotics
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LprobotIcra94
+
+PubTitle: Moving Prolog Toward Objects
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OolpIlps94
+
+PubTitle: Robot Control Systems as Contextual Logic Programs
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LprobotScsai95
+
+PubTitle: Agent Coordination and Control through Logic Theories
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltAiia95
+
+PubTitle: La programmazione logica nello sviluppo del software: dai modelli agli strumenti
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LpseCnr95
+
+PubTitle: Programmazione Logica Orientata agli Oggetti
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OmiciniPhdthesis95
+
+PubTitle: An Object-Oriented Approach to Planning
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OoplanningFapr96
+
+PubTitle: Integrating Knowledge Acquisition in Plan Selection
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OoplanningAiia96
+
+PubTitle: An Extensible Framework for the Development of Coordinated Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltCoord1996
+
+PubTitle: Logic Tuple Spaces for the Coordination of Heterogeneous Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltFrocos1996
+
+PubTitle: Learning with an Object-Oriented Data Model
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OoilpAiia97
+
+PubTitle: Programmable Coordination Media
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectCoord97
+
+PubTitle: Expressive Power of the ACLT Reaction Specification Language
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltTechrep97
+
+PubTitle: Merging Logic Programming into Web-based Technology: A Coordination-based Approach
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LpcoordIclp97
+
+PubTitle: Designing Multi-Agent Systems around an Extensible Communication Abstraction
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltModelage97
+
+PubTitle:  TuCSoN: a Coordination model for Mobile Information Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonIiis98
+
+PubTitle: Co-ordination of Mobile Information Agents in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonJir98
+
+PubTitle: Coordination of Mobile Agents for Information Systems: the  TuCSoN Model
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonAiia98
+
+PubTitle: On the Expressive Power of a Language for Programming Coordination Media
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectSac98
+
+PubTitle: Adopting an Object-Oriented Data Model in Inductive Logic Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OoilpFlairs1999
+
+PubTitle: Coordination for Internet Application Development
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonJaamas2
+
+PubTitle: Designing Multi-Agent Systems around an Extensible Communication Abstraction
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AcltLnai1760
+
+PubTitle: Multi-Agent Systems on the Internet: Extending the Scope of Coordination towards Security and Topology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatMaamaw99
+
+PubTitle: Tuple Centres for the Coordination of Internet Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonSac99
+
+PubTitle: Coordination Technology for the Development of Multi-Agent Systems on the Web
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceAiia99
+
+PubTitle: Coordination in Context: Authentication, Authorisation and Topology in Mobile Agent Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatCoord99
+
+PubTitle: Building Mobile Agent Applications in  HiMAT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatPdse99
+
+PubTitle: An Architecture for Tuple-based Coordination of Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceSpe99
+
+PubTitle: Engineering Multi-Agent Systems in  LuCe
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceIclp99
+
+PubTitle: The  HiMAT Model for Mobile Agent Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatPodc99
+
+PubTitle: The Explorable Topology: Supporting Agent Autonomy on the Internet
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatWsdaal99
+
+PubTitle: On the Semantics of Tuple-based Coordination Models
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordSac99
+
+PubTitle: Coordination Models for Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordAgentlink99
+
+PubTitle: Modelling Network Topology and Mobile Agent Interaction: an Integrated Framework
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/HimatSac99
+
+PubTitle: Coordination Technologies for Internet Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordNjc99
+
+PubTitle: From Objects to Agent Societies: Abstractions and Methodologies for the Engineering of Open Distributed Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaWoa2000
+
+PubTitle: Multiagent System Engineering: The Coordination Viewpoint
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordAtalVI
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceEsawI
+
+PubTitle: Coordination and Access Control in Open Distributed Agent Systems: The  TuCSoN Approach
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonCoord00
+
+PubTitle: A Coordination Infrastructure for Agent-based Internet Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceWetice00
+
+PubTitle: Formal  ReSpecT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectAgp00
+
+PubTitle: Hybrid Coordination Models for Handling Information Exchange among Internet Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordAiia00
+
+PubTitle: Special Track on Coordination Models, Languages and Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroCmSac2000
+
+PubTitle: The  LuCe Coordination Technology for MAS Design and Development on the Internet
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceCoord00
+
+PubTitle:  SODA: Societies and Infrastructures in the Analysis and Design of Agent-based Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAose2000
+
+PubTitle: Ruling Agent Motion in Structured Environments
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonHpcn00
+
+PubTitle: Multi-Agent Systems as Composition of Observable Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsWoa2001
+
+PubTitle: Formal  ReSpecT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectEntcs48
+
+PubTitle: On Observation as a Coordination Pattern: An Ontology and a Formal Framework
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsSac2001
+
+PubTitle: Enlightened Agents in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonWoa2001
+
+PubTitle: From Tuple Spaces to Tuple Centres
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectScp41
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceEntcs48
+
+PubTitle: Editorial: Why Coordination Models and Languages in AI?
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordaiAai15
+
+PubTitle:  LuCe: A Tuple-based Coordination Infrastructure for Prolog and Java Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LuceJaamas4
+
+PubTitle: On the Notion of Agent Coordination Context: Preliminary Notes
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAiia01
+
+PubTitle: Enlightened Agents in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonAiia2001
+
+PubTitle: Agent-Oriented Software Engineering for Internet Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/Coordbook2001%2DCh13
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceEsawII
+
+PubTitle:  tuProlog: A Light-weight Prolog for Internet Applications and Infrastructures
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TuprologPadl01
+
+PubTitle: Multi-Agent Systems as Composition of Observable Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsAiia2001
+
+PubTitle: Agent Coordination Infrastructures for Virtual Enterprises and Workflow Management
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonCiaV
+
+PubTitle: Coordination Models, Languages and Applications. Track Chair Messages
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroCmSac2001
+
+PubTitle:  SODA: Societies and Infrastructures in the Analysis and Design of Agent-based Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAoseI
+
+PubTitle: Coordination as a Paradigm for Systems Integration
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordJosi10
+
+PubTitle: The  TuCSoN Coordination Infrastructure for Virtual Enterprises
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonWetice2001
+
+PubTitle: Specifying Agent Observable Behaviour
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsAamas02
+
+PubTitle: Integrated Procedures for Evaluating Technical, Environmental and Economical Aspects in Farms -- The SIPEAA Project
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SipeaaEsa2002
+
+PubTitle: Engineering Agent Societies: A Case Study in Smart Environments
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAamas02
+
+PubTitle: Objective vs. Subjective Coordination in Agent-based Systems: A Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObjsubjCoord02
+
+PubTitle: Coordination Knowledge Engineering
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordKer17
+
+PubTitle: Towards a Notion of Agent Coordination Context
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccUbiq02
+
+PubTitle: A Framework for Systemic Coordination in Open Computational Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordWoa2002
+
+PubTitle: Towards an Alternative Semantics for FIPA ACL
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AclAtai02
+
+PubTitle: Tuple-based Models in the Observation Framework
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsCoord02
+
+PubTitle: Extending  ReSpecT for Multiple Coordination Flows
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectPdpta02
+
+PubTitle: On the Grey-Box Modelling Approach for Autonomous Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsAiia2002
+
+PubTitle: An Observation Approach to Semantics of Agents Communication Languages
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObservationAai16
+
+PubTitle: Coordination Tools for MAS Development and Deployment
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ToolsAai16
+
+PubTitle: Editorial Message: Special Track on Coordination Models, Languages and Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroCmSac2002
+
+PubTitle: Modelling Agents as Observable Sources
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObservationJucs8
+
+PubTitle: Have  ReSpecT for /sc LogOp
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LogopWoa2002
+
+PubTitle: On the Expressiveness of Event-Based Coordination Media
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordPdpta02
+
+PubTitle: Agent Coordination Contexts: Experiments in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CtxWoa2002
+
+PubTitle: Software Engineering for Large-scale Multi-Agent Systems: SELMAS'2002
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/Selmas2002Icse02
+
+PubTitle: Coordination Tools for the Development of Agent-based Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ToolsAtai2002
+
+PubTitle: A Specification Language for Agents Observable Behaviour
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObsIcai02
+
+PubTitle: Virtual Enterprises and Workflow Management as Agent Coordination Issues
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonIjcis11
+
+PubTitle: First International Workshop on Theory and Practice of Open Computational Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TapocsreportWetice2003
+
+PubTitle: Rethinking MAS Infrastructure based on Activity Theory
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AtEumas2003
+
+PubTitle: Activity Theory as a Framework for MAS Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AtEsawIII
+
+PubTitle: Reasoning about Organisation: Shaping the Infrastructure
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAiia2003
+
+PubTitle: Integrating Objective /& Subjective Coordination in FIPA: A Roadmap to  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/FipaWoa2003
+
+PubTitle: Coordination as a Service: Ontological and Formal Foundation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordEntcs68
+
+PubTitle: Formal Specification and Enactment of Security Policies through Agent Coordination Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccEntcs85
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceSelmasI
+
+PubTitle: Objective versus Subjective Coordination in the Engineering of Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObjsubjIia03
+
+PubTitle: Task-Oriented Engineering of Coordinated Software Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseCe2003
+
+PubTitle: Editorial Message: Special Track on Coordination models, Languages and Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroCmSac2003
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceCiaVII
+
+PubTitle: Supporting Coordination in Open Computational Systems with  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonWetice2003
+
+PubTitle: Targeting Reusability and Replaceability of Simulation Models for Agricultural Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SipeaaEsa2004
+
+PubTitle: Second International Workshop on Theory and Practice of Open Computational Systems (TAPOCS 2004)
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TapocsreportWetice2004
+
+PubTitle:  ReSpecT Nets: Towards an Analysis Methodology for  ReSpecT Specifications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectFoclasa04
+
+PubTitle: MAS as Complex Systems: A View on the Role of Declarative Approaches
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MasDaltI
+
+PubTitle: Coordination and Collaboration Activities in Cooperative Information Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordIjcis13
+
+PubTitle: On the Semantics of Coordination Models for Distributed Systems: The /sc LogOp Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LogopEntcs97
+
+PubTitle: Role-Based Access Control in MAS using Agent Coordination Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RbacAotp2004
+
+PubTitle: A Conceptual Framework for Self-Organising MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BicWoa2004
+
+PubTitle: MAS Organization within a Coordination Infrastructure: Experiments in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccEsawIV
+
+PubTitle: Agent Coordination Context: From Theory to Practice
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAtai04
+
+PubTitle: A Semantics for the Interaction of Agents with Coordination Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AclAtai04
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceEsawIV
+
+PubTitle: Message from the Program Chairs
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PcmessageSac2004
+
+PubTitle: Integrating Objective /& Subjective Coordination in Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/FipaSac2004
+
+PubTitle: Coordination Infrastructures in the Engineering of Multiagent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordMseasbook
+
+PubTitle: Open Directions in Agent-Oriented Software Engineering
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseUpgradeV
+
+PubTitle: An RBAC Approach for Securing Access Control in a MAS Coordination Infrastructure
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RbacSasemas2004
+
+PubTitle: Coordination Artifacts: Environment-based Coordination for Intelligent Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordAamas2004
+
+PubTitle: Towards Seamless Agent Middleware
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AgentmiddlewareWetice2004
+
+PubTitle: An Agent-oriented Conceptual Framework for Biological Systems Simulation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BioNettab04
+
+PubTitle: What I See is What You Say: Coordination in a Shared Environment with Behavioral Implicit Communication
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BicCeas2004
+
+PubTitle: Multi-agent Infrastructures for Objective and Subjective Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordAai18
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceDaltI
+
+PubTitle: Challenges and Research Directions in Agent-Oriented Software Engineering
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseJaamas9
+
+PubTitle: Engineering Trust in Complex System through Mediating Infrastructures
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TrustWoa2004
+
+PubTitle: Process-Algebraic Approaches for Multi-Agent Systems: An Overview
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OverviewAaecc16
+
+PubTitle: Programming MAS with Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsPromas2005
+
+PubTitle: On the Role of Simulations in Engineering Self-Organizing MAS: the Case of an Intrusion Detection System in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgEsoa2005
+
+PubTitle: An Organisation Infrastructure for Multi-Agent Systems based on Agent Coordination Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAamas05
+
+PubTitle: On the Role of Simulation in the Engineering of Self-Organising Systems: Detecting Abnormal Behaviour in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgWoa2005
+
+PubTitle: An Agent-Oriented Conceptual Framework for Systems Biology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BioTcsbIII
+
+PubTitle: The AgentLink III Technical Forums: Introduction to the Special Issue
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroKer20
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceTcsbIII
+
+PubTitle: MAS Meta-models on Test: UML vs. OPM in the  SODA Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaCeemas05
+
+PubTitle: An Organisation Infrastructure for Multi-Agent Systems based on Agent Coordination Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAiia2005
+
+PubTitle: The Second AgentLink III Technical Forum
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AgentLink2TechForum%2DAln17
+
+PubTitle: Message from the Program Chairs
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PcmessageSac2005
+
+PubTitle: Multi-paradigm Java-Prolog Integration in  tuProlog
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TuprologScp57
+
+PubTitle: Time-Aware Coordination in  ReSpecT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TimedCoord05
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceEsawV
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceDaltII
+
+PubTitle: Cognitive Stigmergy: A Framework Based on Agents and Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CogstigEumas2005
+
+PubTitle: ``Exhibitionists'' and ``Voyeurs'' do it better: A Shared Environment Approach for Flexible Coordination with Tacit Messages
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BicE4masI
+
+PubTitle: RBAC for Organisation and Security in an Agent Coordination Infrastructure
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RbacEntcs128
+
+PubTitle: An Algebraic Approach for Modelling Organisation, Roles and Contexts in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RbacmasAaecc16
+
+PubTitle: The Second AgentLink III Technical Forum: Main Issues and Hot Topics in European Agent Research
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroInformatica29
+
+PubTitle: Computational Institutions for Modelling Norm-Regulated MAS: An Approach Based on Coordination Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/NormsAnirem05
+
+PubTitle: Zooming Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAose2005
+
+PubTitle:  SODA: A Roadmap to Artefacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsaw05
+
+PubTitle: Engineering MAS Environment with Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsE4mas2005
+
+PubTitle: Environment-Based Coordination Through Coordination Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordE4masI
+
+PubTitle: Linkable Coordination Artifacts for Inter-Organisational Workflow
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IowCiow2006
+
+PubTitle: Coordination as a Service
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordFundamentainformaticae73
+
+PubTitle: Coordination Artifacts as First-class Abstractions for MAS Engineering: State of the Research
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsSelmasIV
+
+PubTitle: Simulating Minority Game with  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MgsimIsc06
+
+PubTitle: Formal  ReSpecT in the A/&A Perspective
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectFoclasa06
+
+PubTitle: Exploring the Dynamics of Self-Organising Systems with Stochastic $/pi$-Calculus: Detecting Abnormal Behaviour in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgAtai06
+
+PubTitle: Multiagent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MasIaIII
+
+PubTitle: Agent Coordination Contexts for the Formal Specification and Enactment of Coordination and Security Policies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccScp63
+
+PubTitle: simpA-WS: An Agent-Oriented Computing Technology for WS-based SOA Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SimpawsWoa06
+
+PubTitle: On the Role of Simulations in Engineering Self-Organising MAS: The Case of an Intrusion Detection System in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgEsoaIII
+
+PubTitle: /it Construenda est  CArtAgO: Toward an Infrastructure for Artifacts in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CartagoAt2ai06
+
+PubTitle: Distributed Workflow upon Linkable Coordination Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WfmsCoord06
+
+PubTitle: Cognitive Stigmergy: A Framework Based on Agents and Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CogstigE4mas2006
+
+PubTitle: Zooming Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAoseVI
+
+PubTitle: Minority Game: A Logic-Based Approach in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MinorityGameWoa06
+
+PubTitle: Programming MAS with Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsPromasIII
+
+PubTitle: The Second AgentLink III Technical Forum: Main Issues and Hot Topics in European Agent Research -- Part 2
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroInformatica30
+
+PubTitle: The Multidisciplinary Patterns of Interaction from Sciences to Computer Science
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/InteractionInterbook
+
+PubTitle: Agents /& Artifacts for Systems Biology: Toward a Framework based on  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BiosimIsc06
+
+PubTitle: /sl Agens Faber: Toward a Theory of Artefacts for MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AgensfaberEntcs150
+
+PubTitle: Operating Instructions for Intelligent Agent Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsKer21
+
+PubTitle: Simulation of Minority Game in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MgdemoWoa2006
+
+PubTitle: Metodologie per l'ingegneria del software: approccio ad agenti
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseAica06
+
+PubTitle: Agent Coordination Contexts in a MAS Coordination Infrastructure
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccAai20
+
+PubTitle:  SODA: A Roadmap to Artefacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsawVI
+
+PubTitle: Computational Institutions for Modelling Norm-Regulated MAS: An Approach Based on Coordination Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/NormsCoinI
+
+PubTitle:  CArtAgO: An Infrastructure for Engineering Computational Environments in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CartagoE4mas06
+
+PubTitle: Designing Self-organising MAS Environments: The Collective Sort Case
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgE4masIII
+
+PubTitle: Formal  ReSpecT in the A/&A Perspective
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectEntcs175
+
+PubTitle: Prototyping A/&A  ReSpecT in Maude
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectFoclasa07
+
+PubTitle:  ReSpecT Nets: Towards an Analysis Methodology for  ReSpecT Specifications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectEntcs180
+
+PubTitle: Environment as a First Class Abstraction in Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EnvJaamas14
+
+PubTitle: Infrastructure for RBAC-MAS: An Approach Based on Agent Coordination Contexts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RbacmasAai21
+
+PubTitle: Design Patterns for Self-Organising Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgCeemas07
+
+PubTitle: Timed Environment for Web Agents
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TimedWias5
+
+PubTitle: Co-Argumentation Artifact for Agent Societies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsArgmas07
+
+PubTitle:  tuProlog 2.0: One Step Beyond
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TuprologAlpnews20
+
+PubTitle: ``Give Agents their Artifacts'': The A/&A Approach for Engineering Working Environments in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsAamas07
+
+PubTitle: Experiences in Automated Workflows using Dialectical Argumentation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WorkflowIadisisa07
+
+PubTitle: Building Smart Environments as Agent Workspaces
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SmartenvWetice07
+
+PubTitle: Introduction to the Special Issue: The AgentLink III Technical Forums
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/IntroTaas2
+
+PubTitle: From AOSE Methodologies to MAS Infrastructures: The  SODA Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsaw07
+
+PubTitle:  CArtAgO: A Framework for Prototyping Artifact-Based Environments in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CartagoE4masIII
+
+PubTitle: Cognitive Stigmergy: Towards a Framework Based on Agents and Artifacts
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CognitivestigmergyE4masIII
+
+PubTitle: From AO Methodologies to MAS Infrastructures: The  SODA Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsawVIII
+
+PubTitle: Advancing Object-Oriented Standards Toward Agent-Oriented Methodologies: SPEM 2.0 on  SODA
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaWoa2008
+
+PubTitle: Editorial: Special Issue on Foundations, Advanced Topics and Industrial Perspectives of Multi-agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EditorialJaamas17
+
+PubTitle: Artifacts in the A/&A Meta-Model for Multi-Agent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsJaamas17
+
+PubTitle: The Architecture and Design of a Malleable Object-Oriented Prolog Engine
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TuprologSac08
+
+PubTitle: Prototyping A/&A  ReSpecT in Maude
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectEntcs194
+
+PubTitle: A Logic Programming Model for Web Resources
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpWebist08
+
+PubTitle: A Multi-Theory Logic Programming Language for the World Wide Web
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpTechrep08
+
+PubTitle: Argumentation and Artifact for Dialogue Support
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsArgmas08
+
+PubTitle: Co-Argumentation Artifact for Agent Societies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsArgmasIV
+
+PubTitle: Lineage Commitment of Hematopoietic Stem Cells: An Agent-based Model
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AbmhscMasbio08
+
+PubTitle: Situating A/&A ReSpecT for Pervasive Environment Applications
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectComa08
+
+PubTitle: A/&A for Modelling and Engineering Simulations in Systems Biology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SimulationIjaose2
+
+PubTitle: Arguments and Artifacts for Dispute Resolution
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AdrWoa2008
+
+PubTitle: Toward a Framework for Collaborative Learning based on Agent-based Technologies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ElearningInted08
+
+PubTitle: Designing Self-Organising Environments with Agents and Artefacts: A Simulation-Driven Approach
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgIjaose2
+
+PubTitle: The A/&A Programming Model and Technology for Developing Agent Environments in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AeaPromasV
+
+PubTitle: Agent-Based Collaboration Systems: A Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/Elearningkc08
+
+PubTitle: A Multi-Theory Logic Language for the World Wide Web
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpIclp08
+
+PubTitle: RBAC-MAS /&  SODA: Experimenting RBAC in AOSE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsaw08
+
+PubTitle: A Conceptual Framework for Collaborative Learning Systems Based on Agent Technologies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ElearningIcl08
+
+PubTitle: Automating Workflow using Dialectical Argumentation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WorkflowIadiscsis3
+
+PubTitle: Smart Environments as Agent Workspaces
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SmartenvUbiccCPE
+
+PubTitle: Experimenting with Stochastic Prolog as a Simulation Language
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/StochasticprologCilc08
+
+PubTitle: SPEM on Test: the  SODA Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseSac08
+
+PubTitle: Towards a Logic Language and Framework for Web Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpUnito08
+
+PubTitle: Environment in Agent-Oriented Software Engineering Methodologies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseMags5
+
+PubTitle: Towards a Logic Language and Framework for Web Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpCeur487
+
+PubTitle: Special Track on: Agent-Oriented Software Engineering Methodologies and Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AomsintroSac09
+
+PubTitle: Agents, Intelligence, and Tools
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AiIfipbook2009
+
+PubTitle: An Agent-based Application for Home Intelligence
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaIcaart09
+
+PubTitle: General-Purpose Coordination Abstractions for Managing Interaction in MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AccIat09
+
+PubTitle: A Framework for Modelling and Implementing Self-Organising Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgcoordSac09
+
+PubTitle: A Semantic eScience Portal for International Scientific and Academic Cooperation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SemanticwebDaaam2009
+
+PubTitle: Argumentation and Artifact for Dialog Support
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArtifactsArgmasV
+
+PubTitle: Environment Programming in  CArtAgO
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CartagoPromasbookII
+
+PubTitle: Situated Process Engineering for Integrating Processes from Methodologies to Infrastructures
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseSac09
+
+PubTitle: RBAC-MAS /&  SODA: Experimenting RBAC in AOSE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaEsawIX
+
+PubTitle: Combining Simulation and Formal Tools for Developing Self-Organizing MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SimulationformalMassimulationbook09
+
+PubTitle: Situated Tuple Centres in  ReSpecT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectSac09
+
+PubTitle: Documenting  SODA: An Evaluation of the Process Documentation Template
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaWoa2010
+
+PubTitle: Process Documentation Standardization: An Initial Evaluation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/StandardDpdf2010
+
+PubTitle: An Agent-based Model for the Pattern Formation in Drosophila Melanogaster
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AbmmorphoAlifeXII
+
+PubTitle: Self Organization in Coordination Systems using a WordNet-based Ontology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgwordnetSaso2010
+
+PubTitle: HomeManager: Testing Agent-Oriented Software Engineering in Home Intelligence
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AoseCcis67
+
+PubTitle: A Multiscale Agent-based Model of Morphogenesis in Biological Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AbmmorphoWoa2010
+
+PubTitle: Agent-based Conference Management: A Case Study in  SODA
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaIjaose4
+
+PubTitle: Agents, Multi-Agent Systems and Declarative Programming: Who, What, When, Where, Why, How?
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LpmasLnai6125
+
+PubTitle: Argumentation and Artifacts for Negotiation Support
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArgumentationIjaiS10
+
+PubTitle: Towards a Pervasive Infrastructure for Chemical-Inspired Self-organising Services
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ChemcoordSoarbook
+
+PubTitle: A Self-Organising Infrastructure for Chemical-Semantic Coordination: Experiments in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SoscWoa2010
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceDaltVIII
+
+PubTitle: Processes Engineering and AOSE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ProcessengineeringAoseX
+
+PubTitle: Coordination Models and Languages: From Parallel Computing To Self-Organisation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SelforgcoordKer25years
+
+PubTitle: Coordinating e-Health Systems with  TuCSoN Semantic Tuple Centres
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EhealthAcr11
+
+PubTitle: Self-organising Knowledge-intensive Workspaces
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SoskisPerada2011
+
+PubTitle: Towards a Logic Framework for Web Programming
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/WeblpIa5
+
+PubTitle: Infrastructures and Tools for Multiagent Systems for the New Generation of Distributed Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EditorialEaai24
+
+PubTitle: Self-aware Pervasive Service Ecosystems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SaperrefProcedia7
+
+PubTitle:  BaSi: Multi-Agent Based Simulation for Medieval Battles
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MabsWoa2011
+
+PubTitle: Adaptable Multi-Agent Systems: The Case of the Gaia Methodology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/GaiaJseke21
+
+PubTitle: Description Spaces with Fuzziness
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/FuzzycoordSac11
+
+PubTitle: Towards the Analysis /& Prediction of Complex System Behaviour in SAPERE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PredictAsensis2012
+
+PubTitle: Agents Writing on Walls: Cognitive Stigmergy and Beyond
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EnvbasedcoordinationCastelfranchiFestschrift2012
+
+PubTitle: Self-Organising News Management: The /emphMolecules of Knowledge Approach
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokAsensis2012
+
+PubTitle: ASENSIS 2012 -- First International Workshop on Adaptive Service Ecosystems: Nature and Socially Inspired Solutions
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AsensisSasow2012
+
+PubTitle: Self-Organising News Management: The /emphMolecules of Knowledge Approach
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokSasow2012
+
+PubTitle: Molecules of Knowledge: A Novel Perspective over Knowledge Management
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokDcaiia2012
+
+PubTitle: Towards the Analysis /& Prediction of Complex System Behaviour in SAPERE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PredictSasow2012
+
+PubTitle: Dynamic Composition of Coordination Abstractions for Pervasive Systems: The Case of /itfamily LogOp
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LogopSac2012
+
+PubTitle: Collaborative Learning and ICT: A Prototypal Learning Environment
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CollaborativelearningNova2013
+
+PubTitle: Probabilistic Embedding: Experiments with Tuple-based Probabilistic Languages
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PmeSac2013
+
+PubTitle:  tuProlog: Making Prolog Ubiquitous
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/2PAlpnews2013
+
+PubTitle: Engineering Pervasive Multiagent Systems in SAPERE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SapereaoseEmas2013
+
+PubTitle: Nature-inspired Coordination Models: Current Status, Future Trends
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/NatureinspiredcoordIsrnse2013
+
+PubTitle: Agents /& Multiagent Systems: En Route Towards Complex Intelligent Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MassurveyIa7
+
+PubTitle: Tuple-based Coordination of Stochastic Systems with Uniform Primitives
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/UniformWoa2013
+
+PubTitle: Coordination for Situated MAS: Towards an Event-driven Architecture
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EventsituatedmasPnse2013
+
+PubTitle: Promoting Space-Aware Coordination:  ReSpecT as a Spatial-Computing Virtual Machine
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SpatialrespectScw2013
+
+PubTitle: Probabilistic Modular Embedding for Stochastic Coordinated Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PmeCoordination2013
+
+PubTitle: Complexity and Interaction: Blurring Borders between Physical, Computational, and Social Systems. Preliminary Notes
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/InteractioncomplexityIccci2013
+
+PubTitle: MoK: Stigmergy Meets Chemistry to Exploit Social Actions for Coordination Purposes
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokAisb2013
+
+PubTitle: Semantic Tuple Centres
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SemcoordScp78
+
+PubTitle:  TuCSoN on Cloud: An Event-driven Architecture for Embodied / Disembodied Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsononcloudIca3pp2013
+
+PubTitle: Space-aware Coordination in ReSpecT
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SpatialWoa2013
+
+PubTitle: Molecules of Knowledge: Self-Organisation in Knowledge-Intensive Environments
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokIdc2012
+
+PubTitle: Event-driven Programming for Situated MAS with  ReSpecT Tuple Centres
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/RespectAbcmi2013
+
+PubTitle: A Biochemically-inspired Coordination-based Model for Simulating Intracellular Signalling Pathways
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BtssocJos7
+
+PubTitle: Software Agents: Twenty Years and Counting
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AgentsIeeecn6
+
+PubTitle: Engineering Pervasive Multiagent Systems in SAPERE
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SapereaoseEmasI
+
+PubTitle: Nature-inspired Coordination for Complex Distributed Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/NatureinspcoordIdc2012
+
+PubTitle: Simulation in Agent-Oriented Software Engineering: The  SODA Case Study
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AosesimulationScp78
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefaceComplenetV
+
+PubTitle: The Gaia Methodology Process
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/GaiaAodpHandbook2014
+
+PubTitle: Coordination-aware Elasticity
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordcloudUcc2014
+
+PubTitle:  TuCSoN Coordination for MAS Situatedness: Towards a Methodology
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TucsonWoa2014
+
+PubTitle: Coordination in Situated Systems: Engineering MAS Environment in  TuCSoN
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SituatedcoordIdcs2014
+
+PubTitle: Argumentation and Artifacts for Negotiation Support
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ArgumentationArgbook2014
+
+PubTitle: Coordination Mechanisms for the Modelling and Simulation of Stochastic Systems: The Case of Uniform Primitives
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/UniformMesmag2014
+
+PubTitle: The Autonomy of Automated Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MultilevelautonomyAwslep2014
+
+PubTitle: The  SODA Methodology: Meta-Model and Process Documentation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SodaAodpHandbook2014
+
+PubTitle: Anticipatory Coordination in Socio-technical Knowledge-intensive Environments: Behavioural Implicit Communication in MoK
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MokAiia2015
+
+PubTitle: Developing Pervasive Multi-Agent Systems with Nature-Inspired Coordination
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SaperePmc10Years
+
+PubTitle: Preface
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/PrefacePrima2015
+
+PubTitle: Blending Event-Based and Multi-Agent Systems around Coordination Abstractions
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EbsmasCoordination2015
+
+PubTitle: Reconciling Event- and Agent-Based Paradigms in the Engineering of Complex Systems: The Role of Environment Abstractions
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/EbsmabsE4mas10years
+
+PubTitle: Models of Autonomy and Coordination: Integrating Subjective /& Objective Approaches in Agent Development Frameworks
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/ObjsubjIdcVIII
+
+PubTitle: Event-Based vs./ Multi-Agent Systems: Towards a Unified Conceptual Framework
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/AgenteventCscwd2015
+
+PubTitle: Extending the Gillespie's Stochastic Simulation Algorithm for Integrating Discrete-Event and Multi-Agent Based Simulation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/DesmabsMabs2015
+
+PubTitle: Coordination of Large-Scale Socio-Technical Systems: Challenges and Research Directions
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordinationWoa2015
+
+PubTitle: A Gillespie-based Computational Model for Integrating Event-driven and Multi-Agent Based Simulation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/DesmabsAamas2015
+
+PubTitle: Coordinating Activities and Change: An Event-Driven Architecture for Situated MAS
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordarchEaai41
+
+PubTitle: Labelled Variables in Logic Programming: A First Prototype in  tuProlog
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/Labelled2pDcaiia2015
+
+PubTitle: Privacy Through Anonymisation in Large-scale Socio-technical Systems: Multi-lingual Contact Centres across the EU
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/BisonInsci2016
+
+PubTitle: The Autonomy of Technological Systems and Responsibilities for their Use
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/TechautonomyAutonomybook2015
+
+PubTitle: Extending the Gillespie's Stochastic Simulation Algorithm for Integrating Discrete-Event and Multi-Agent Based Simulation
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MabsdeMabsXVI
+
+PubTitle: Labelled Variables in Logic Programming: Foundations
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/Label2pCilc016
+
+PubTitle: Towards Logic Programming as a Service: Experiments in  tuProlog
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/LpaasWoa2016
+
+PubTitle: Towards the Adoption of Agent-Based Modelling and Simulation in Mobile Health Systems for the Self-Management of Chronic Diseases
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MhealthselfmanWoa2016
+
+PubTitle: Game Engines to Model MAS: A Research Roadmap
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/GamemasWoa2016
+
+PubTitle: Challenges of Decentralized Coordination in Large-scale Ubicomp Systems
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordUbicomp2016
+
+PubTitle: Multi-paradigm Coordination for MAS: Integrating Heterogeneous Coordination Approaches in MAS Technologies
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/MulticoordWoa2016
+
+PubTitle: Foreward by Prof. Andrea Omicini
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/OmiciniforewardOsimasbook2016
+
+PubTitle: Coordination in Large-Scale Socio-Technical Systems: Introduction to the Special Section
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/CoordstsintroTetc4
+
+PubTitle: Spatial Tuples: Augmenting Physical Reality with Tuple Spaces
+PubUrl: http://test2.apice.unibo.it/xwiki/bin/view/Publications/SpatialtuplesIdc2016
+
