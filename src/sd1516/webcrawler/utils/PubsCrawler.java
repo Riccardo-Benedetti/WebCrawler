@@ -46,7 +46,7 @@ public class PubsCrawler {
 		ExecutorService exec = new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors(), Runtime.getRuntime().availableProcessors(), 0L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(30));
 		
 		List<Publication> results = new ArrayList<Publication>(); // list of publications found
-		List<Future<List<Publication>>> futures = new ArrayList<Future<List<Publication>>>(); // list of futures that each return a publications list
+		List<Future<List<Publication>>> futures = new ArrayList<Future<List<Publication>>>(); // list of futures, each returns a publications list
 		
 		try {
 			// connecting to the page named "Spazio delle Pubblicazioni ApiCE"
@@ -55,7 +55,7 @@ public class PubsCrawler {
 			 // starting from the first year...
 			int year = SysKb.APICE_STARTING_YEAR;
 			
-			while(!webHome.select("[href$="+year+"]").isEmpty()){ // iterate the list of all the years from 1980 till today
+			while(!webHome.select("[href$="+year+"]").isEmpty()){ // iterate the list of all the years from 1980 until today
 			
 				//connecting to the page named "Publications in the APICe Space (year)"
 				Document pubsPerYear = Jsoup.connect(SysKb.APICE_HOME+"PapersPerYear?year="+year).timeout(Integer.MAX_VALUE).get(); 

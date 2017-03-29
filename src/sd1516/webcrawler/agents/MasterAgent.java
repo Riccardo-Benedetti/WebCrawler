@@ -131,7 +131,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 	/*
 	 * System registration rules: 
 	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
-	 * it name and the node it belongs
+	 * its name and the node it belongs to
 	 */
 	private class HelloHandler extends OneShotBehaviour {
 
@@ -463,7 +463,7 @@ public class MasterAgent extends GuiAgent implements IWebCrawlerGui {
 					fsm.registerDefaultTransition("ResultsHandler", "RemWaitingsHandler");
 					// ...then remove the Waiting tuples...
 					fsm.registerDefaultTransition("RemWaitingsHandler", "UpdateViewHandler");
-					// ...and finally show the results trough the GUI and wait for next research
+					// ...and finally show the results on the GUI and wait for next research
 				}
 			};
 			

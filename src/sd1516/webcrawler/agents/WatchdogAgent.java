@@ -43,9 +43,9 @@ import sd1516.webcrawler.utils.ValidTermFactory;
 
 /*
  * WATCHDOG AGENT
- * This Agent is essential to guarantee all the network fault tolerance and is 
- * supposed that never will crash.
- * It keeps track of all nodes registered in the system, and their own Agents.
+ * This Agent is essential to guarantee all the network fault tolerance and it is 
+ * supposed that it will never crash.
+ * It keeps track of all the nodes registered in the system, and their own Agents.
  * It periodically checks that each node is effectively working correctly by 
  * exchanging Ping-Pong tuples with their relative Ping Agents.
  * If it doesn't receive no answer from a particular Ping Agent, it triggers
@@ -153,9 +153,9 @@ public class WatchdogAgent extends Agent {
 				fsm.registerDefaultTransition("PingHandler", "PongHandler");
 				// ...then get all the pong responses...
 				fsm.registerDefaultTransition("PongHandler", "RecoveryMastersHandler");
-				// ...then recover eventual crashed masters...
+				// ...then recover potential crashed masters...
 				fsm.registerDefaultTransition("RecoveryMastersHandler", "RecoveryWorkersHandler");
-				// ...then recover eventual crashed workers...
+				// ...then recover potential crashed workers...
 				fsm.registerDefaultTransition("RecoveryWorkersHandler", "AgentsHandler");
 				// ...finally restart the cycle
 			}
@@ -167,7 +167,7 @@ public class WatchdogAgent extends Agent {
 	/*
 	 * System registration rules: 
 	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
-	 * it name and the node it belongs
+	 * its name and the node it belongs to
 	 */
 	public class AgentsHandler extends Behaviour {
 
@@ -192,22 +192,22 @@ public class WatchdogAgent extends Agent {
 						String agent = ValidTermFactory.getStringByTerm(lt.getArg(0).getArg(0).toTerm());
 						String node = ValidTermFactory.getStringByTerm(lt.getArg(1).getArg(0).toTerm());
 						
-						// is that a Ping Agent? That's means there is a new node in the system.
+						// is that a Ping Agent? That means there is a new node in the system.
 						// Creating a new key entry for each HashMap structure
 						if(agent.contains(SysKb.PING_NAME)){
 							pingAgents.put(node, agent); // new node and ping name
 							masterAgents.put(node, new ArrayList<String>()); // initially none masters
 							workerAgents.put(node, new ArrayList<String>()); // initially none workers
 						}
-						// is that a Master Agent? That's means there its node is already registered.
-						// Appending new Master at the list values corresponding.
+						// is that a Master Agent? That means that its node is already registered.
+						// Appending new Master to the corresponding list value.
 						else if(agent.contains(SysKb.MASTER_NAME)){
 							List<String> m = masterAgents.get(node); 
 							m.add(agent);
 							masterAgents.put(node,m); // 
 						}
-						// is that a Worker Agent? That's means there its node is already registered.
-						// Appending new Worker at the list values corresponding.
+						// is that a Worker Agent? That means that its node is already registered.
+						// Appending new Worker to the corresponding list value.
 						else if(agent.contains(SysKb.WORKER_NAME)){
 							List<String> w = workerAgents.get(node);
 							w.add(agent);
@@ -305,7 +305,7 @@ public class WatchdogAgent extends Agent {
 					for(String node : pingAgents.keySet()){
 						// A Ping Agent has not answered?
 						if(!okAgents.contains(pingAgents.get(node))){
-							// Which masters and workers belong to it? Add 'em to the crashed lists
+							// Which masters and workers belong to it? Add them to the crashed lists
 							crashedMasters.addAll(masterAgents.get(node));
 							crashedWorkers.addAll(workerAgents.get(node));
 							pingAgents.remove(node);
@@ -331,7 +331,7 @@ public class WatchdogAgent extends Agent {
 	}
 	
 	/*
-	 * Remove the crashed masters before the workers, to avoid the eventuality
+	 * Remove the crashed masters before the workers, to avoid the potentiality
 	 * that a worker could see the Waiting Tuple of a crashed master
 	 */
 	public class RecoveryMastersHandler extends Behaviour {
@@ -357,14 +357,14 @@ public class WatchdogAgent extends Agent {
 					TucsonOpCompletionEvent res;
 					
 					if(!secondRemoval){
-						// ...remove all the eventual Waiting tuples...
+						// ...remove all the potential Waiting tuples...
 						LogicTuple waiting = LogicTuple.parse("waiting(who(" + who + "), keyword(K)" + ")");
 						
 						final InAll inAllW = new InAll(tcid, waiting);
 						
 						res = WatchdogAgent.this.bridge.synchronousInvocation(inAllW, Long.MAX_VALUE, this);
 					}else{
-						// ...and then remove all the eventual Keyword tuples...
+						// ...and then remove all the potential Keyword tuples...
 						LogicTuple keyword = LogicTuple.parse("keyword(value(K), from(" + who + ")" + ")");
 						
 						final InAll inAllK = new InAll(tcid, keyword);
@@ -423,7 +423,7 @@ public class WatchdogAgent extends Agent {
 					TucsonOpCompletionEvent res = WatchdogAgent.this.bridge.synchronousInvocation(inp, Long.MAX_VALUE, this);
 					
 					if(res != null){
-						// ...remove all the eventual Waiting tuples...
+						// ...remove all the potential Waiting tuples...
 						
 						//...but what if a master is waiting just for these workers?...
 						if(!(ValidTermFactory.getStringByTerm(res.getTuple().getArg(1).getArg(0).toTerm()).equals("K") && 
@@ -432,7 +432,7 @@ public class WatchdogAgent extends Agent {
 							//...first get the master name...
 							String master = ValidTermFactory.getStringByTerm(res.getTuple().getArg(2).getArg(0).toTerm());
 							
-							//...then send him a Done tuple replacing that it was supposed to send by the crashed worker
+							//...then send him a Done tuple replacing the one that was supposed to be sent by the crashed worker
 							if(!crashedMasters.contains(master)){
 								WatchdogAgent.this.bridge.clearTucsonOpResult(this);
 								

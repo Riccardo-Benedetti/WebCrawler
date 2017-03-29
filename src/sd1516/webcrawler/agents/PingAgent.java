@@ -135,7 +135,7 @@ public class PingAgent extends Agent {
 	/*
 	 * System registration rules: 
 	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
-	 * it name and the node it belongs
+	 * its name and the node it belongs to
 	 */
 	private class HelloHandler extends OneShotBehaviour{
 
@@ -223,7 +223,7 @@ public class PingAgent extends Agent {
 		public void action() {
 			LogicTuple pong;
 			
-			// it is importa to include my "signature" to the Pong tuple
+			// it is important to include my "signature" to the Pong tuple
 			try {
 				Term me = ValidTermFactory.getTermByString(PingAgent.this.getAgentName());
 				pong = LogicTuple.parse("pong(" + me + ")");

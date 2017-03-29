@@ -23,11 +23,11 @@ import jade.wrapper.StaleProxyException;
 import sd1516.webcrawler.sysconstants.SysKb;
 
 /*
- * This deployment must be EXECUTED AS THE FIRST.
- * It contains the Watchdog Agent and represent the
+ * This deployment class must be EXECUTED AS THE FIRST.
+ * It contains the Watchdog Agent and it represents the
  * centralized point of all the network fault tolerance.
  * 
- * It need 2 mandatory arguments:
+ * It needs 2 mandatory arguments:
  * - The IP string of the node in which this jar is executed
  * - The IP string of the node in which the Tuple Space is located
  */

@@ -46,9 +46,9 @@ import sd1516.webcrawler.utils.ValidTermFactory;
  * WORKER AGENT
  * This Agent starts monitoring the Tuple Space looking for new keywords from 
  * Master Agent(s).
- * Each Worker Agent grabs a keyword at a time and search all of Apice publications
+ * Each Worker Agent grabs a keyword at a time and searches all of Apice publications
  * that match with it.
- * As soon as the results are ready, it put them back to the Tuple Space and restart
+ * As soon as the results are ready, it puts them back to the Tuple Space and restarts
  * looking for others keywords.
  */
 public class WorkerAgent extends Agent {
@@ -155,7 +155,7 @@ public class WorkerAgent extends Agent {
 				fsm.registerDefaultTransition("SearchPubsHandler", "CheckMasterHandler");
 				// ...then, before upload the result to the Tuple Space, check the Master state...
 				fsm.registerTransition("CheckMasterHandler", "ReturnPubsHandler", 1);
-				// ...the Master still waiting, so upload the results...
+				// ...the Master is still waiting, so upload the results...
 				fsm.registerDefaultTransition("ReturnPubsHandler", "RemoveWorkingHandler");
 				// ...the Master has been crashed meanwhile the Worker was working, so
 				// there's no need to return the results...
@@ -173,7 +173,7 @@ public class WorkerAgent extends Agent {
 	/*
 	 * System registration rules: 
 	 * each new Agent must say "Hello!" to the Watchdog Agent specifying
-	 * it name and the node it belongs
+	 * its name and the node it belongs to
 	 */
 	private class HelloHandler extends OneShotBehaviour {
 
@@ -301,7 +301,7 @@ public class WorkerAgent extends Agent {
 	}
 	
 	/*
-	 * Check if my Master is fine and still waiting
+	 * Check if my Master is fine and if it's still waiting
 	 */
 	private class CheckMasterHandler extends OneShotBehaviour{
 
@@ -311,7 +311,7 @@ public class WorkerAgent extends Agent {
 		public void action() {
 			LogicTuple waiting = null;
 			
-			// Is still there the Master M waiting for keyword K?
+			// Is the Master M waiting for keyword K still there?
 			try {
 				Term to = ValidTermFactory.getTermByString(master);
 				waiting = LogicTuple.parse("waiting(who(" + to + ")," + "keyword(K)"+ ")");
@@ -320,7 +320,7 @@ public class WorkerAgent extends Agent {
 				WorkerAgent.this.doDelete();
 			}
 			
-			// Checking for a tuple means NO REMOVING it, so use Read not suspensive primitive instead of In
+			// Checking for a tuple means NOT REMOVING it, so use the not suspensive primitive Read instead of In
 			TucsonOpCompletionEvent res = null;
 			final Rdp rdp = new Rdp(WorkerAgent.this.tcid, waiting);
 			

@@ -23,12 +23,12 @@ import jade.wrapper.StaleProxyException;
 import sd1516.webcrawler.sysconstants.SysKb;
 
 /*
- * This deployment initially contains only a Ping Agent and a ManagerAgent.
- * By using the ManagerAgent GUI, the Container can be host also one or more
+ * This deployment class initially contains only a Ping Agent and a ManagerAgent.
+ * By using the ManagerAgent GUI, the Container can host also one or more
  * Master and Worker Agents.
  * 
- * It need 3 mandatory arguments:
- * - An unique network identifier (IT IS STRICTLY FORBIDDEN HAVE MORE THAN ONE RASPBERRY WITH THE SAME NUMBER ID!!!)
+ * It needs 3 mandatory arguments:
+ * - An unique network identifier (IT IS STRICTLY FORBIDDEN TO HAVE MORE THAN ONE RASPBERRY WITH THE SAME ID NUMBER!!!)
  * - The IP string of the node in which this jar is executed
  * - The IP string of the node in which the Tuple Space is located
  */
@@ -62,7 +62,7 @@ public class WebCrawlerRaspiMain {
 			AgentController pingAgent = rc.createNewAgent(SysKb.PING_NAME+raspiId, SysKb.PING_AGENT, new Object[]{myIp, tcIp});
 			pingAgent.start();
 			
-			/* This sleep avoid a possible BindException.
+			/* This sleep avoids a possible BindException.
 			 * It can happen in case of both Agents try to start a new Tucson Node on the same TucsonHelper singleton instance.
 			 * During these 1000 ms, the Ping Agent should perform and complete this starting operation,
 			 * then the Manager should detect the already existing one and join it.

@@ -19,9 +19,9 @@ import alice.tuprolog.Term;
 
 /*
  * This utility is needed to build valid LogicTuples.
- * A LogicTuple is valid if has a ' char at the beginning and another at the end but NO ONE IN THE MIDDLE. 
+ * A LogicTuple is valid if it has a ' char at the beginning and another at the end but NO ONE IN THE MIDDLE. 
  * The first encodes the LogicTuple replacing all possible ' chars in the middle with the "!CH39!" string.
- * The second make the opposite, decoding the "!CH39!" strings back to ' char.
+ * The second does the opposite thing, decoding the "!CH39!" strings back to ' char.
 */
 public class ValidTermFactory {
 
