@@ -9,7 +9,7 @@ package sd1516.webcrawler.sysconstants;
  * @email riccardo.benedetti3@studio.unibo.it
  * @email elisabetta.ramilli@studio.unibo.it
  * 
- * Alma Mater Studiorum - Università di Bologna
+ * Alma Mater Studiorum - Universitï¿½ di Bologna
  * Laurea Magistrale in Ingegneria e Scienze Informatiche
  * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
  * 
@@ -57,6 +57,6 @@ public class SysKb {
 	/*
 	 * Apice publication space: url and year of the first publications
 	 */
-	public static final String APICE_HOME = "http://test2.apice.unibo.it/xwiki/bin/view/Publications/";
+	public static final String APICE_HOME = "http://apice.unibo.it/xwiki/bin/view/Publications/";
 	public static final int APICE_STARTING_YEAR = 1980;
 }

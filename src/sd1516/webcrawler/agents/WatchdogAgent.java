@@ -9,7 +9,7 @@ package sd1516.webcrawler.agents;
  * @email riccardo.benedetti3@studio.unibo.it
  * @email elisabetta.ramilli@studio.unibo.it
  * 
- * Alma Mater Studiorum - Università di Bologna
+ * Alma Mater Studiorum - Universitï¿½ di Bologna
  * Laurea Magistrale in Ingegneria e Scienze Informatiche
  * (Corso di Sistemi Distribuiti - Prof. Andrea Omicini & Stefano Mariani)
  * 
@@ -180,6 +180,11 @@ public class WatchdogAgent extends Agent {
 		@Override
 		public void action() {
 			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			try {
 				LogicTuple hello = LogicTuple.parse("hello(from(A),node(N))");
 				
 				// get and remove all the "Hellos"
@@ -191,7 +196,7 @@ public class WatchdogAgent extends Agent {
 					for(LogicTuple lt : res.getTupleList()){
 						String agent = ValidTermFactory.getStringByTerm(lt.getArg(0).getArg(0).toTerm());
 						String node = ValidTermFactory.getStringByTerm(lt.getArg(1).getArg(0).toTerm());
-						
+
 						// is that a Ping Agent? That means there is a new node in the system.
 						// Creating a new key entry for each HashMap structure
 						if(agent.contains(SysKb.PING_NAME)){
@@ -202,9 +207,9 @@ public class WatchdogAgent extends Agent {
 						// is that a Master Agent? That means that its node is already registered.
 						// Appending new Master to the corresponding list value.
 						else if(agent.contains(SysKb.MASTER_NAME)){
-							List<String> m = masterAgents.get(node); 
+							List<String> m = masterAgents.get(node);
 							m.add(agent);
-							masterAgents.put(node,m); // 
+							masterAgents.put(node,m); //
 						}
 						// is that a Worker Agent? That means that its node is already registered.
 						// Appending new Worker to the corresponding list value.
@@ -461,7 +466,7 @@ public class WatchdogAgent extends Agent {
 		public boolean done() {
 			int nWorkers = crashedWorkers.size();
 			int c = this.completed;
-			if(completed == nWorkers){
+			if(completed == nWorkers) {
 				crashedWorkers.clear();
 				crashedMasters.clear();
 				this.completed = 0;
